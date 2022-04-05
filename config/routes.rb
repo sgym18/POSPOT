@@ -1,9 +1,19 @@
 Rails.application.routes.draw do
+  get 'users/show'
+  get 'users/edit'
+  get 'users/quit_confirm'
   devise_for :users
   root to: 'homes#top'
   get 'about' => 'homes#about'
 
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
+
+  resources :users, only: [:index, :show, :edit, :update] do
+    member do
+      get 'quit_confirm'
+
+    end
   end
 end
