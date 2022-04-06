@@ -1,28 +1,40 @@
 <!--あとでパス変更する。users,map,profile,map-->
-<% if user_signed_in? %>
-  <li>
-    <%= link_to "Users", root_path %>
-  </li>
-  <li>
-    <%= link_to "Map", root_path %>
-  </li>
-  <li>
-    <%= link_to "Profile", root_path %>
-  </li>
-  <li>
-    <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-  </li>
-<% else %>
-  <li>
-    <%= link_to "About", about_path %>
-  </li>
-  <li>
-    <%= link_to "Map", root_path %>
-  </li>
-  <li>
-    <%= link_to "Sign up", new_user_registration_path %>
-  </li>
-  <li>
-    <%= link_to "Log in", new_user_session_path %>
-  </li>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-12 d-flex align-items-start">
+      <% if user_signed_in? %>
+        <div>
+          <%= link_to "Users", root_path %>
+        </div>
+        <div>
+          <%= link_to "Map", root_path %>
+        </div>
+        <div>
+          <h1>POSP<i class="fa-solid fa-location-dot"></i>T</h1>
+        </div>
+        <div>
+          <%= link_to "Profile", root_path %>
+        </div>
+        <div>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+        </div>
+      <% else %>
+        <div>
+          <%= link_to "About", about_path %>
+        </div>
+        <div>
+          <%= link_to "Map", root_path %>
+        </div>
+        <div>
+          <h1>POSPOT</h1>
+        </div>
+        <div>
+          <%= link_to "Sign up", new_user_registration_path %>
+        </div>
+        <div>
+          <%= link_to "Log in", new_user_session_path %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
