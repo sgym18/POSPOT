@@ -1,41 +1,38 @@
-<!--<div id='map'></div>-->
+<div id='map'></div>
 
-<!--<style>-->
-<!--#map {-->
-<!--  height: 300px;-->
-<!--  width: 400px;-->
-<!--}-->
-<!--</style>-->
+<style>
+#map {
+  height: 300px;
+  width: 400px;
+}
+</style>
 
-<!--<script>-->
-<!--  let map-->
+<script>
+  let map
 
-<!--  function initMap(){-->
-<!--    geocoder = new google.maps.Geocoder()-->
-    <!--var test = {lat: <%#= @post.latitude %>, lng: <%#= @post.longitude %>};-->
+    function initMap(){
+      geocoder = new google.maps.Geocoder()
 
-<!--    map = new google.maps.Map(document.getElementById('map'), {-->
-<!--      center: {-->
-<!--        lat: gon.post.latitude,-->
-<!--        lng: gon.post.longitude-->
-<!--      },-->
-<!--      zoom: 15,-->
-<!--    });-->
+      map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: gon.post.latitude, lng:gon.post.longitude},
+          zoom: 12,
+      });
 
-<!--    var contentString = '住所：<%#= @post.address %>';-->
-<!--    var infowindow = new google.maps.InfoWindow({-->
-<!--      content: contentString-->
-<!--    });-->
 
-<!--    var marker = new google.maps.Marker({-->
-<!--      position: {-->
-<!--        lat: gon.post.latitude,-->
-<!--        lng: gon.post.longitude-->
-<!--      },-->
-<!--      map: map,-->
-    
-<!--    });-->
-<!--  }-->
-<!--</script>-->
+
+          (function(){
+          var contentString = "住所：<%= @post.address %>";
+
+          var marker = new google.maps.Marker({
+              position:{lat: gon.post.latitude, lng: gon.post.longitude},
+              map: map,
+              title: contentString
+          });
+
+          })();
+
+      }
+</script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_KEY'] %>&callback=initMap" async defer></script>
+<!--<script src="https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=<%#= ENV['GOOGLE_MAP_KEY'] %>"></script>-->

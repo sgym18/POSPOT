@@ -45,8 +45,8 @@ ActiveRecord::Schema.define(version: 2022_04_06_004124) do
     t.string "spot", null: false
     t.text "caption", null: false
     t.string "address", null: false
-    t.float "longitude", null: false
-    t.float "latitude", null: false
+    t.float "longitude"
+    t.float "latitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

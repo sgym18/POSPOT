@@ -2,11 +2,11 @@
 <html>
   <head>
     <title>POSPOT</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%#= include_gon %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= include_gon %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -14,6 +14,8 @@
     <header>
       <%= render 'layouts/header' %>
     </header>
+    <main>
     <%= yield %>
+    </main>
   </body>
 </html>
