@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/show'
-  get 'users/edit'
-  get 'users/quit_confirm'
   devise_for :users
   root to: 'homes#top'
   get 'about' => 'homes#about'
