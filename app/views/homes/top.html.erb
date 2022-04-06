@@ -1,2 +1,15 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="top">
+  <p>
+    POSPOTへようこそ！<br>
+    さっそく登録して投稿しにいきましょう。
+  </p>
+  <div class="btn guest_login_btn">
+    <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+  </div>
+  <div class="btn login_btn">
+    <%= link_to "Log in", new_user_session_path %>
+  </div>
+  <div class="btn signup_btn">
+    <%= link_to "Sign up", new_user_registration_path %>
+  </div>
+</div>
