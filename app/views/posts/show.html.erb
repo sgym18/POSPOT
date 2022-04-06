@@ -1,2 +1,41 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<!--<div id='map'></div>-->
+
+<!--<style>-->
+<!--#map {-->
+<!--  height: 300px;-->
+<!--  width: 400px;-->
+<!--}-->
+<!--</style>-->
+
+<!--<script>-->
+<!--  let map-->
+
+<!--  function initMap(){-->
+<!--    geocoder = new google.maps.Geocoder()-->
+    <!--var test = {lat: <%#= @post.latitude %>, lng: <%#= @post.longitude %>};-->
+
+<!--    map = new google.maps.Map(document.getElementById('map'), {-->
+<!--      center: {-->
+<!--        lat: gon.post.latitude,-->
+<!--        lng: gon.post.longitude-->
+<!--      },-->
+<!--      zoom: 15,-->
+<!--    });-->
+
+<!--    var contentString = '住所：<%#= @post.address %>';-->
+<!--    var infowindow = new google.maps.InfoWindow({-->
+<!--      content: contentString-->
+<!--    });-->
+
+<!--    var marker = new google.maps.Marker({-->
+<!--      position: {-->
+<!--        lat: gon.post.latitude,-->
+<!--        lng: gon.post.longitude-->
+<!--      },-->
+<!--      map: map,-->
+    
+<!--    });-->
+<!--  }-->
+<!--</script>-->
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_KEY'] %>&callback=initMap" async defer></script>
