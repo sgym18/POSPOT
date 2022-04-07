@@ -1,15 +1,21 @@
-<div class="top">
-  <p>
-    POSPOTへようこそ！<br>
-    さっそく登録して投稿しにいきましょう。
-  </p>
-  <div class="btn guest_login_btn">
-    <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
-  </div>
-  <div class="btn login_btn">
-    <%= link_to "Log in", new_user_session_path %>
-  </div>
-  <div class="btn signup_btn">
-    <%= link_to "Sign up", new_user_registration_path %>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+      <p class="text-center">
+        <strong>POSPOT</strong>へようこそ！<br>
+        さっそく登録して投稿しにいきましょう。
+      </p>
+      <div class="btn-wrapper col-10 mx-auto">
+        <div class="row">
+          <%= link_to 'ゲストログイン（閲覧用', users_guest_sign_in_path, method: :post, class: "btn btn-dark rounded-pill mb-4" %>
+        </div>
+        <div class="row">
+          <%= link_to "Log in", new_user_session_path, class: "btn btn-dark rounded-pill mb-4" %>
+        </div>
+        <div class="row">
+          <%= link_to "Sign up", new_user_registration_path, class: "btn btn-dark rounded-pill mb-4" %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

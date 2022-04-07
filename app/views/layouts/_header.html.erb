@@ -1,40 +1,42 @@
 <!--あとでパス変更する。users,map,profile,map-->
 <div class="container">
-  <div class="row">
-    <div class="col-12 d-flex align-items-start">
-      <% if user_signed_in? %>
-        <div>
-          <%= link_to "Users", root_path %>
-        </div>
-        <div>
-          <%= link_to "Map", root_path %>
-        </div>
-        <div>
-          <h1>POSP<i class="fa-solid fa-location-dot"></i>T</h1>
-        </div>
-        <div>
-          <%= link_to "Profile", root_path %>
-        </div>
-        <div>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-        </div>
-      <% else %>
-        <div>
-          <%= link_to "About", about_path %>
-        </div>
-        <div>
-          <%= link_to "Map", root_path %>
-        </div>
-        <div>
-          <h1>POSPOT</h1>
-        </div>
-        <div>
-          <%= link_to "Sign up", new_user_registration_path %>
-        </div>
-        <div>
-          <%= link_to "Log in", new_user_session_path %>
-        </div>
-      <% end %>
-    </div>
+  <div class="row d-flex align-items-center justify-content-center text-center py-4">
+    <% if user_signed_in? %>
+      <div class="col">
+        <%= link_to "Users", root_path, class: "btn btn-dark rounded-pill" %>
+      </div>
+      <div class="col">
+        <%= link_to "Map", root_path, class: "btn btn-dark rounded-pill" %>
+      </div>
+      <div class="col">
+        <h1>
+          <%= link_to "POSPOT", root_path %>
+        </h1>
+      </div>
+      <div class="col">
+        <%= link_to "Profile", root_path, class: "btn btn-dark rounded-pill" %>
+      </div>
+      <div class="col">
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-dark rounded-pill" %>
+      </div>
+    <% else %>
+      <div class="col">
+        <%= link_to "About", about_path, class: "btn btn-dark rounded-pill" %>
+      </div>
+      <div class="col">
+        <%= link_to "Map", root_path, class: "btn btn-dark rounded-pill" %>
+      </div>
+      <div class="col">
+        <h1>
+          <%= link_to "POSPOT", root_path %>
+        </h1>
+      </div>
+      <div class="col">
+        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-dark rounded-pill" %>
+      </div>
+      <div class="col">
+        <%= link_to "Log in", new_user_session_path, class: "btn btn-dark rounded-pill" %>
+      </div>
+    <% end %>
   </div>
 </div>
