@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'posts/index'
-  get 'posts/show'
-  get 'posts/new'
-  get 'posts/edit'
   devise_for :users
   root to: 'homes#top'
   get 'about' => 'homes#about'
@@ -17,4 +13,7 @@ Rails.application.routes.draw do
 
     end
   end
+
+  resources :posts
+  get '/map_request', to: 'posts#map', as: 'map_request'
 end
