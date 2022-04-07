@@ -1,11 +1,52 @@
-<div id='map'></div>
+<div class="conrtainer">
+  <div class="row mx-auto">
+    <div class="col-9">
+      <div class="row mb-2">
+        <div class="col-4">
+          <%= image_tag @post.user.get_profile_image(150,150), class: "mx-auto rounded-circle" %>
+          <p class="h4 text-center"><%= @post.user.name %></p>
+        </div>
+        <div class="col-8">
+          <div class="row">
+            <div class="col-10">
+              <h3><%= @post.spot %></h3>
+              <span class="text-white bg-dark rounded">tag</span>
+              <p><%= @post.caption %></p>
+            </div>
+            <div class="col-2">
+              <span class="h3">
+                <%= link_to edit_post_path(@post), class: "text-decoration-none text-dark" do %>
+                  <i class="fa-solid fa-pen-to-square"></i>
+                <% end %>
+              </span>
+              <!--後でリンク張る-->
+              <span class="h3"><i class="fa-regular fa-bookmark"></i></span>
+              <span class="h3"><i class="fa-solid fa-bookmark"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<style>
-#map {
-  height: 300px;
-  width: 400px;
-}
-</style>
+      <div class="row">
+        <div class="col-6">
+          <div id='show_map' class="mx-auto border border-dark border-5 rounded"></div>
+        </div>
+        <div class="col-6">
+          <%= image_tag @post.get_image(500,500), class: "rounded" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <!--コメント投稿フォーム-->
+      </div>
+    </div>
+
+    <div class="col-3 border border-dark">
+      <!--コメント一覧-->
+    </div>
+  </div>
+</div>
+
 
 <script>
   let map
@@ -13,25 +54,22 @@
     function initMap(){
       geocoder = new google.maps.Geocoder()
 
-      map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: gon.post.latitude, lng:gon.post.longitude},
-          zoom: 12,
+      map = new google.maps.Map(document.getElementById('show_map'), {
+        center: {lat: gon.post.latitude, lng:　gon.post.longitude},
+        zoom: 12,
       });
 
+      (function(){
+        var contentString = "住所：<%= @post.address %>";
 
-
-          (function(){
-          var contentString = "住所：<%= @post.address %>";
-
-          var marker = new google.maps.Marker({
-              position:{lat: gon.post.latitude, lng: gon.post.longitude},
-              map: map,
-              title: contentString
-          });
-
-          })();
-
-      }
+        var marker = new google.maps.Marker({
+          position:{lat: gon.post.latitude, lng: gon.post.longitude},
+          map: map,
+          title: contentString
+        });
+      })();
+    }
 </script>
+
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_KEY'] %>&callback=initMap" async defer></script>

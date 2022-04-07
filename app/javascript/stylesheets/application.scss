@@ -1,2 +1,16 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+body {
+  background-color: #F6AE2D;
+}
+
+#index_map {
+  height: 600px;
+  width: 1000px;
+}
+
+#show_map {
+  height: 500px;
+  width: 500px;
+}

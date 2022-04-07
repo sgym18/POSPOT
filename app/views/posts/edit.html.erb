@@ -1,2 +1,33 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<div class="container col-5 mx-auto mt-5">
+  <div class="row">
+    <%= form_with model: @post do |f| %>
+      <div class="mb-3">
+        <%= f.label :spot, "スポット" %>
+        <%= f.text_field :spot, autofocus: true, placeholder: "スポット名", class: 'form-control' %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :caption, "キャプション" %>
+      　<%= f.text_area :caption, placeholder: "紹介文", class: 'form-control', rows: "3" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :address, "住所" %>
+        <%= f.text_field :address, placeholder: "住所", class: 'form-control' %>
+      </div>
+
+      <div class="mb-4">
+        <%= f.label :image, "画像" %>
+        <%= f.file_field :image, accept: "image/*", class: 'form-control' %>
+      </div>
+
+      <div class="d-grid">
+        <%= f.submit "編集を保存", class: "btn btn-lg btn-dark" %>
+      </div>
+    <% end %>
+    <!--後でカラー変更-->
+    <div class="d-grid mt-3">
+      <%= link_to "保存せず終了", post_path(@post), class: "btn btn-lg btn-dark" %>
+    </div>
+  </div>
+</div>

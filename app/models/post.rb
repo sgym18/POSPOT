@@ -1,5 +1,10 @@
 class Post < ApplicationRecord
   belongs_to :user
+
+  validates :spot, presence: true
+  validates :caption, presence: true
+  validates :address, presence: true
+  validates :image, presence: true
   # 経度、緯度取得のため記述
   geocoded_by :address
   after_validation :geocode

@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
+
   def index
     @posts = Post.all
+    gon.posts = @posts
   end
 
   def show
@@ -23,6 +25,16 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.save
+      redirect_to post_path(@post)
+    else
+      render :edit
+    end
   end
 
   def map
