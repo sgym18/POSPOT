@@ -13,41 +13,15 @@
   }
 </style>
 
-<!--<script>-->
-<!--  let mapInstance-->
-
-<!--  function initMap(){-->
-<!--    mapInstance = new google.maps.Map(document.getElementById('map'), {-->
-<!--    center: {lat: -34.397, lng: 150.644},-->
-<!--    zoom: 8-->
-<!--    });-->
-<!--  }-->
-<!--</script>-->
 <script>
-  let map
+  let mapInstance
 
-    function initMap(){
-      geocoder = new google.maps.Geocoder()
-
-      map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 35.68123620000001, lng:139.7671248},
-          zoom: 12,
-      });
-
-
-      <% @posts.each do |m| %>
-          (function(){
-          var contentString = "住所：<%= m.address %>";
-
-          var marker = new google.maps.Marker({
-              position:{lat: <%= m.latitude %>, lng: <%= m.longitude %>},
-              map: map,
-              title: contentString
-          });
-
-          })();
-      <% end %>
-      }
+  function initMap(){
+    mapInstance = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 8
+    });
+  }
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_KEY'] %>&callback=initMap" async defer></script>
