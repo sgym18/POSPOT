@@ -1,25 +1,33 @@
-<%= form_with model: @post do |f| %>
-  <div>
-    <%= f.label "スポット" %>
-    <%= f.text_field :spot, autofocus: true %>
-  </div>
+<div class="container col-5 mx-auto mt-5">
+  <div class="row">
+    <%= form_with model: @post do |f| %>
+      <div class="mb-3">
+        <%= f.label :spot, "スポット" %>
+        <%= f.text_field :spot, autofocus: true, placeholder: "スポット名", class: 'form-control' %>
+      </div>
 
-  <div>
-    <%= f.label "キャプション" %>
-    <%= f.text_area :caption %>
-  </div>
+      <div class="mb-3">
+        <%= f.label :caption, "キャプション" %>
+      　<%= f.text_area :caption, placeholder: "紹介文", class: 'form-control', rows: "3" %>
+      </div>
 
-  <div>
-    <%= f.label "住所" %>
-    <%= f.text_field :address %>
-  </div>
+      <div class="mb-3">
+        <%= f.label :address, "住所" %>
+        <%= f.text_field :address, placeholder: "住所", class: 'form-control' %>
+      </div>
 
-  <div>
-    <%= f.label "画像" %>
-    <%= f.file_field :image, accept: "image/*" %>
-  </div>
+      <div class="mb-3">
+        <%= f.label :image, "画像" %>
+        <%= f.file_field :image, accept: "image/*", class: 'form-control' %>
+      </div>
 
-  <div>
-    <%= f.submit "投稿" %>
+      <div class="d-grid">
+        <%= f.submit "投稿", class: "btn btn-lg btn-dark" %>
+      </div>
+    <% end %>
+    <!--後でカラー変更-->
+    <div class="d-grid mt-3">
+      <%= link_to "Mapへ戻る", posts_path, class: "btn btn-lg btn-dark" %>
+    </div>
   </div>
-<% end %>
+</div>
