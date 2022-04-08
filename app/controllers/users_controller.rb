@@ -28,7 +28,10 @@ class UsersController < ApplicationController
   end
 
   def quit
-
+    @user = User.find(params[:id])
+    @user.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
   end
 
   private
