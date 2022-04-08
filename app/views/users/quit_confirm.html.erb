@@ -1,7 +1,23 @@
-<div class="quit_confirm">
-  <p>本当に退会しますか？</p>
-  <div class="quit_confirm_btn">
-    <div class="btn">退会しない</div>
-    <div class="btn">退会する</div>
+<div class='container'>
+  <div class='row'>
+    <h4 class="px-3 text-center"><strong>本当に退会しますか？</strong></h4>
+  </div>
+  <br>
+  <div class='row'>
+    <h4 class="px-3 text-center">退会すると、投稿やブックマークができなくなります。</h4>
+  </div>
+  <div class='row'>
+    <h4 class="px-3 text-center">再度ご利用をいただく場合には、新規登録のお手続きが必要になります。</h4>
+  </div>
+  <div class='row'>
+    <h4 class="px-3 text-center">退会する場合は、「退会する」をクリックしてください。</h4>
+  </div>
+  <br>
+  <div class='row'>
+    <!--ボタンカラー変更する-->
+    <h4 class="px-3 text-center">
+      <%= link_to '退会しない', user_path(@user), class: "btn btn-dark" %>
+      <%= link_to '退会する', quit_user_path(@user), method: :patch, class: "btn btn-danger" %>
+    </h4>
   </div>
 </div>
