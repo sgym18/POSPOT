@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts
+  # 経度、緯度取得のため記述
+  geocoded_by :address
+  after_validation :geocode
 
   has_one_attached :profile_image
 
