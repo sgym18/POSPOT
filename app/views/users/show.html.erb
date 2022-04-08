@@ -1,4 +1,55 @@
-<div>
-  <%= image_tag @user.get_profile_image(100,100) %>
-  <%= @user.name %>
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <div class="row">
+        <div class="col">
+          <%= form_with url: map_request_path, method: :get, local: false do |f| %>
+            <%= f.text_field :address, placeholder: "住所で検索", class: "form-control rounded-pill" %>
+          <% end %>
+        </div>
+        <div class="col text-center">
+          <%= link_to "新規投稿", new_post_path, class: "btn btn-outline-dark rounded-pill w-100" %>
+        </div>
+        <div class="col text-center">
+          <!--後でリンク変える-->
+          <%= link_to "ブックマーク", root_path, class: "btn btn-outline-dark rounded-pill w-100" %>
+        </div>
+      </div>
+
+      <div class="row my-2">
+        <div class="col-4">
+          <%= image_tag @user.get_profile_image(150,150), class: "mx-auto rounded-circle" %>
+        </div>
+        <div class="col-8">
+          <div class="row">
+            <div class="col-10">
+              <h3><%= @user.name %></h3>
+              <p><%= @user.introduction %></p>
+              <div class="d-flex">
+                <!--フォローー機能実装したらリンク張る-->
+                <div>
+                  フォロワー
+                </div>
+                <div>
+                  フォロー中
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <span class="h3">
+                <%= link_to edit_user_path(@user), class: "text-decoration-none text-dark" do %>
+                  <i class="fa-solid fa-user-gear"></i>
+                <% end %>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-2 justify-content-center">
+        <div id="index_map"></div>
+      </div>
+    </div>
+    <div class="col-3 border border-dark"></div>
+  </div>
 </div>
