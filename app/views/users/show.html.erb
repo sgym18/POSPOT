@@ -15,23 +15,51 @@
           <%= link_to "ブックマーク", root_path, class: "btn btn-outline-dark rounded-pill w-100" %>
         </div>
       </div>
-
       <div class="row my-2">
-        <div class="col-4">
+        <div class="col-3">
           <%= image_tag @user.get_profile_image(150,150), class: "mx-auto rounded-circle" %>
         </div>
-        <div class="col-8">
+        <div class="col-9">
           <div class="row">
             <div class="col-10">
-              <h3><%= @user.name %></h3>
+              <div class="d-flex align-items-center">
+                <h3><%= @user.name %></h3>
+                <span class="ms-auto">
+                  <% unless @user == current_user %>
+                    <% if current_user.following?(@user) %>
+                      <%= link_to user_relationships_path(@user), method: :delete, class: "btn btn-dark btn-sm rounded-pill" do %>
+                        <i class="fa-solid fa-user-minus"></i>　フォローを外す
+                      <% end %>
+                    <% else %>
+                      <%= link_to user_relationships_path(@user), method: :post, class: "btn btn-dark btn-sm rounded-pill" do %>
+                        <i class="fa-solid fa-user-plus"></i>　フォローする
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </span>
+              </div>
               <p><%= @user.introduction %></p>
-              <div class="d-flex">
-                <!--フォローー機能実装したらリンク張る-->
-                <div>
-                  フォロワー
+              <div class="row">
+                <!--後でフォローフォロワーでオフキャンバス分ける・パーシャルにする-->
+                <div class="col-3">
+                  <button class="btn btn-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                    フォロワー
+                  </button>
                 </div>
-                <div>
-                  フォロー中
+                <div class="col-3">
+                  <button class="btn btn-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                    フォロー中
+                  </button>
+                </div>
+                <div class="offset-6"></div>
+                <div class="offcanvas offcanvas-end"  tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                  <div class="offcanvas-header">
+                    <h5 id="offcanvasRightLabel">フォロワー</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="閉じる"></button>
+                  </div>
+                  <div class="offcanvas-body">
+                    フォロワー一覧表示させる
+                  </div>
                 </div>
               </div>
             </div>

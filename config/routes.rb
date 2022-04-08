@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get 'quit_confirm'
       patch 'quit'
     end
+    resource :relationships, only: [:create, :destroy]
   end
 
   resources :posts

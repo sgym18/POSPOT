@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @followings = @user.followings
+    @followers = @user.followers
   end
 
   def edit
@@ -23,11 +25,11 @@ class UsersController < ApplicationController
   def quit_confirm
     @user = User.find(params[:id])
   end
-  
+
   def quit
-    
+
   end
-  
+
   private
   def user_params
     params.require(:user).permit(:name, :introduction, :address, :profile_image)
