@@ -75,9 +75,36 @@
       </div>
 
       <div class="row mt-2 justify-content-center">
-        <div id="index_map"></div>
+        <div id="user_map"></div>
       </div>
     </div>
     <div class="col-3 border border-dark"></div>
   </div>
 </div>
+
+<script>
+  let map
+
+  function initMap() {
+    goecoder = new google.maps.Geocoder()
+    var test = {lat: gon.user.latitude, lng: gon.user.longitude};
+
+    map = new google.maps.Map(document.getElementById('user_map'),{
+      center: test,
+      zoom: 15,
+    });
+
+    var contentString = '住所：<%= @user.address %>';
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+    marker = new google.maps.Marker({
+      position: test,
+      map: map,
+      title: contentString
+    });
+  }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_KEY'] %>&callback=initMap" async defer></script>

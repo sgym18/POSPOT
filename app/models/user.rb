@@ -4,6 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :posts
+  # 経度、緯度取得のため記述
+  geocoded_by :address
+  after_validation :geocode
+
   has_many :posts, dependent: :destroy
   # フォローするされるの関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
