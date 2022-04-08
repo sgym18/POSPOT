@@ -8,9 +8,16 @@
             <p><%= user.name %></p>
           <% end %>
           <div class="col-4 d-flex align-items-center">
-            <!--後でifで分ける・パス変える-->
-            <%= link_to root_path, class: "btn btn-dark" do %>
-              <i class="fa-solid fa-user-plus"></i>　フォロー
+            <% unless user == current_user %>
+              <% if current_user.following?(user) %>
+                <%= link_to user_relationships_path(user), method: :delete, class: "btn btn-dark" do %>
+                  <i class="fa-solid fa-user-minus"></i>　フォローを外す
+                <% end %>
+              <% else %>
+                <%= link_to user_relationships_path(user), method: :post, class: "btn btn-dark" do %>
+                  <i class="fa-solid fa-user-plus"></i>　フォローする
+                <% end %>
+              <% end %>
             <% end %>
           </div>
         </div>
