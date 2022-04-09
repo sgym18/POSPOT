@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
   end
 
-  resources :posts
+  resources :posts do
+    resource :bookmarks, only: [:create, :destroy]
+  end
+
   get '/map_request', to: 'posts#map', as: 'map_request'
 end
