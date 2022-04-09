@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_relationships, source: :follower
   has_many :bookmarks, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
 
   # バリデーション
   validates :name, length: { minimum: 1, maximum: 30 }, presence: true
