@@ -12,8 +12,8 @@ class Users::SessionsController < Devise::SessionsController
   def user_state
     @user = User.find_by(email: params[:user][:email])
     return if !@user
-    if @user.valid_password?(params[:user][:passaword]) && @user.is_deleted
-      redirect_to new_user_registration_path
+    if @user.valid_password?(params[:user][:password]) && @user.is_deleted
+      redirect_to new_user_registration_path, notice: "退会済みユーザーのため新規登録が必要です。"
     end
   end
 end
