@@ -1,16 +1,25 @@
-<div class="conrtainer">
+<div class="container-fluid">
   <div class="row mx-auto">
     <div class="col-9">
       <div class="row mb-2">
         <div class="col-4">
-          <%= image_tag @post.user.get_profile_image(150,150), class: "mx-auto rounded-circle" %>
-          <p class="h4 text-center"><%= @post.user.name %></p>
+          <div class="row">
+            <p class="text-center"><%= image_tag @post.user.get_profile_image(150,150), class: "mx-auto rounded-circle" %></p>
+          </div>
+          <div class="row">
+            <p class="h4 text-center"><%= @post.user.name %></p>
+          </div>
         </div>
+
         <div class="col-8">
           <div class="row">
             <div class="col-10">
               <h3><%= @post.spot %></h3>
-              <span class="text-white bg-dark rounded">tag</span>
+              <% @post.tags.each do |tag| %>
+                <span class="text-white bg-dark border border-dark rounded small px-1">
+                  #<%= tag.name %>
+                </span>
+              <% end %>
               <p><%= @post.caption %></p>
             </div>
             <div class="col-2">

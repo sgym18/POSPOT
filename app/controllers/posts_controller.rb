@@ -17,8 +17,10 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    tag_list = params[:post][:tag_name].split(",")
     if @post.save
-      redirect_to post_path(@post)
+      @post.save_tags(tag_list)
+      redirect_to post_path(@post), notice: "投稿しました。"
     else
       render :new
     end
@@ -26,12 +28,15 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @tag_list = @post.tags.pluck(:name).join(",")
   end
 
   def update
     @post = Post.find(params[:id])
+    tag_list = params[:post][:tag_name].split(",")
     if @post.save
-      redirect_to post_path(@post)
+      @post.save_tags(tag_list)
+      redirect_to post_path(@post), notice: "変更を保存しました"
     else
       render :edit
     end
