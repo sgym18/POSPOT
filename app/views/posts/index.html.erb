@@ -23,10 +23,12 @@
       <div class="row">
         <h4 class="text-center">投稿一覧</h4>
       </div>
-      <% @posts.each do |post| %>
-        <div class="row mt-2">
+      <div class="row mt-2">
+        <% @posts.each do |post| %>
           <div class="col-7">
-            <p><%= image_tag post.get_image(250,150) %></p>
+            <%= link_to post_path(post) do %>
+              <p><%= image_tag post.get_image(250,150) %></p>
+            <% end %>
           </div>
           <div class="col-5">
             <div class="row">
@@ -36,11 +38,11 @@
               <div class="col-3">
                 <% if post.bookmarked_by?(current_user) %>
                   <%= link_to post_bookmarks_path(post), method: :delete do %>
-                    <span class="h3"><i class="fa-solid fa-bookmark"></i></span>
+                    <span class="h3 text-dark"><i class="fa-solid fa-bookmark"></i></span>
                   <% end %>
                 <% else %>
                   <%= link_to post_bookmarks_path(post), method: :post do %>
-                    <span class="h3"><i class="fa-regular fa-bookmark"></i></span>
+                    <span class="h3 text-dark"><i class="fa-regular fa-bookmark"></i></span>
                   <% end %>
                 <% end %>
               </div>
@@ -55,9 +57,8 @@
               <% end %>
             </div>
           </div>
-        </div>
-
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
@@ -69,7 +70,7 @@
 
   function initMap(){
     mapInstance = new google.maps.Map(document.getElementById('index_map'), {
-    center: {lat: -34.397, lng: 150.644},
+    center: {lat: gon.user.latitude, lng: gon.user.longitude},
     zoom: 8
     });
   }
