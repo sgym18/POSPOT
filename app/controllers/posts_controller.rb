@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     gon.post = @post
+    @post_comment = PostComment.new
   end
 
   def new
@@ -34,7 +35,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     tag_list = params[:post][:tag_name].split(",")
-    if @post.save
+    if @post.update(post_params)
       @post.save_tags(tag_list)
       redirect_to post_path(@post), notice: "変更を保存しました"
     else

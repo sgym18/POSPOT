@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     resource :bookmarks, only: [:create, :destroy]
+    resources :post_comments, only: [:create, :destroy]
   end
 
   get '/map_request', to: 'posts#map', as: 'map_request'
