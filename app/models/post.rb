@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
+  has_many :bookmarks, dependent: :destroy
 
   validates :spot, presence: true
   validates :caption, presence: true
@@ -27,6 +28,10 @@ class Post < ApplicationRecord
       post_tag =Tag.find_or_create_by(name:new_name)
       self.tags << post_tag
     end
+  end
+
+  def bookmarked_by?(user)
+    bookmarks.exists?(user_id: user.id)
   end
 
   def get_image(width, height)

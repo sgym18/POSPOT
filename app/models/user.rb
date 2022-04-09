@@ -4,7 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :posts
   has_many :posts, dependent: :destroy
   # フォローするされるの関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -12,15 +11,16 @@ class User < ApplicationRecord
   # フォロワー、フォロー中ユーザーの一覧
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_relationships, source: :follower
-  
+  has_many :bookmarks, dependent: :destroy
+
   # バリデーション
   validates :name, length: { minimum: 1, maximum: 30 }, presence: true
-  
+
 
   # 経度、緯度取得のため記述
   geocoded_by :address
   after_validation :geocode
-  
+
   has_one_attached :profile_image
 
   # ゲストログイン
@@ -30,7 +30,7 @@ class User < ApplicationRecord
       user.name = "ゲストユーザー"
     end
   end
-  
+
   # フォロー関係
   def follow(user)
     relationships.create(followed_id: user.id)
@@ -43,7 +43,7 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-  
+
   # 画像リサイズのため
   def get_profile_image(width, height)
   unless profile_image.attached?
