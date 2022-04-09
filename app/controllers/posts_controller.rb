@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    gon.posts = @posts
+    gon.user = current_user
   end
 
   def show
