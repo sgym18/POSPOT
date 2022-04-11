@@ -15,6 +15,11 @@ class Post < ApplicationRecord
 
   has_one_attached :image
 
+  # 画像リサイズのため
+  def get_image(width, height)
+    image.variant(resize_to_fill: [width, height]).processed
+  end
+
   # tag更新処理
   def save_tags(savepost_tags)
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
@@ -35,7 +40,8 @@ class Post < ApplicationRecord
     bookmarks.exists?(user_id: user.id)
   end
 
-  def get_image(width, height)
-    image.variant(resize_to_fill: [width, height]).processed
+  def self.search_for(keyword)
+    Post.where(['spot LIKE(?) OR caption LIKE(?) OR address LIKE(?)',"%#{keyword}%","%#{keyword}%","%#{keyword}%"])
   end
+
 end

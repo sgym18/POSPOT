@@ -24,5 +24,6 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:create, :destroy]
   end
 
-  get '/map_request', to: 'posts#map', as: 'map_request'
+  get 'map_request' => 'posts#map', as: 'map_request'
+  get 'search' => 'searches#search'
 end
