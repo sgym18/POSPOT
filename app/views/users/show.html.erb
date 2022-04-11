@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-9">
+    <div class="col-8">
       <div class="row">
         <div class="col">
           <%= form_with url: map_request_path, method: :get, local: false do |f| %>
@@ -21,18 +21,20 @@
         </div>
         <div class="col-9">
           <div class="row">
-            <div class="col-10">
+            <div class="col-11">
               <div class="d-flex align-items-center">
                 <h3><%= @user.name %></h3>
                 <span class="ms-auto">
-                  <% unless @user == current_user %>
-                    <% if current_user.following?(@user) %>
-                      <%= link_to user_relationships_path(@user), method: :delete, class: "btn btn-dark btn-sm rounded-pill" do %>
-                        <i class="fa-solid fa-user-minus"></i>　フォローを外す
-                      <% end %>
-                    <% else %>
-                      <%= link_to user_relationships_path(@user), method: :post, class: "btn btn-dark btn-sm rounded-pill" do %>
-                        <i class="fa-solid fa-user-plus"></i>　フォローする
+                  <% if user_signed_in? %>
+                    <% unless @user == current_user %>
+                      <% if current_user.following?(@user) %>
+                        <%= link_to user_relationships_path(@user), method: :delete, class: "btn btn-dark btn-sm rounded-pill" do %>
+                          <i class="fa-solid fa-user-minus"></i>　フォローを外す
+                        <% end %>
+                      <% else %>
+                        <%= link_to user_relationships_path(@user), method: :post, class: "btn btn-dark btn-sm rounded-pill" do %>
+                          <i class="fa-solid fa-user-plus"></i>　フォローする
+                        <% end %>
                       <% end %>
                     <% end %>
                   <% end %>
@@ -63,7 +65,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-2">
+            <div class="col-1">
               <span class="h3">
                 <% if @user == current_user %>
                   <%= link_to edit_user_path(@user), class: "text-decoration-none text-dark" do %>
@@ -80,7 +82,49 @@
         <div id="user_map"></div>
       </div>
     </div>
-    <div class="col-3 border border-dark"></div>
+    <div class="col-4">
+      <div class="row">
+        <h4 class="text-center">投稿一覧</h4>
+      </div>
+      <div class="row mt-2">
+        <% @user.posts.each do |post| %>
+          <div class="col-7">
+            <%= link_to post_path(post) do %>
+              <p><%= image_tag post.get_image(250,150) %></p>
+            <% end %>
+          </div>
+          <div class="col-5">
+            <div class="row">
+              <div class="col-9">
+                <p><%= post.spot %></p>
+              </div>
+              <div class="col-3">
+                <% if user_signed_in? %>
+                  <% if post.bookmarked_by?(current_user) %>
+                    <%= link_to post_bookmarks_path(post), method: :delete do %>
+                      <span class="h3 text-dark"><i class="fa-solid fa-bookmark"></i></span>
+                    <% end %>
+                  <% else %>
+                    <%= link_to post_bookmarks_path(post), method: :post do %>
+                      <span class="h3 text-dark"><i class="fa-regular fa-bookmark"></i></span>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+            <div class="row">
+              <% post.tags.each do |tag| %>
+                <div class="col-auto flex-wrap">
+                  <span class="text-white bg-dark border border-dark rounded small px-1">
+                    #<%= tag.name %>
+                  </span>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 
