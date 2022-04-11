@@ -23,6 +23,15 @@ class User < ApplicationRecord
   after_validation :geocode
 
   has_one_attached :profile_image
+  
+  # 画像リサイズのため
+  def get_profile_image(width, height)
+  unless profile_image.attached?
+    file_path = Rails.root.join("app/assets/images/no_image.jpg")
+    profile_image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
+  end
+  profile_image.variant(resize_to_fill: [width, height]).processed
+  end
 
   # ゲストログイン
   def self.guest
@@ -45,12 +54,8 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
-  # 画像リサイズのため
-  def get_profile_image(width, height)
-  unless profile_image.attached?
-    file_path = Rails.root.join("app/assets/images/no_image.jpg")
-    profile_image.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
+  def self.search_for(keyword)
+    User.where(['name LIKE(?) OR introduction LIKE(?)',"%#{keyword}%","%#{keyword}%"])
   end
-  profile_image.variant(resize_to_fill: [width, height]).processed
-  end
+  
 end
