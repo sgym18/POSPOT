@@ -25,49 +25,18 @@
               <div class="d-flex align-items-center">
                 <h3><%= @user.name %></h3>
                 <span class="ms-auto">
-                  <% if user_signed_in? %>
-                    <% unless @user == current_user %>
-                      <% if current_user.following?(@user) %>
-                        <%= link_to user_relationships_path(@user), method: :delete, class: "btn btn-dark btn-sm rounded-pill" do %>
-                          <i class="fa-solid fa-user-minus"></i>　フォローを外す
-                        <% end %>
-                      <% else %>
-                        <%= link_to user_relationships_path(@user), method: :post, class: "btn btn-dark btn-sm rounded-pill" do %>
-                          <i class="fa-solid fa-user-plus"></i>　フォローする
-                        <% end %>
-                      <% end %>
-                    <% end %>
-                  <% end %>
+                  <%= render 'relationships/follow', user: @user %>
                 </span>
               </div>
               <p><%= @user.introduction %></p>
               <div class="row">
-                <!--後でフォローフォロワーでオフキャンバス分ける・パーシャルにする-->
-                <div class="col-3">
-                  <button class="btn btn-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                    フォロワー
-                  </button>
-                </div>
-                <div class="col-3">
-                  <button class="btn btn-dark" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                    フォロー中
-                  </button>
-                </div>
-                <div class="offset-6"></div>
-                <div class="offcanvas offcanvas-end"  tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                  <div class="offcanvas-header">
-                    <h5 id="offcanvasRightLabel">フォロワー</h5>
-                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="閉じる"></button>
-                  </div>
-                  <div class="offcanvas-body">
-                    フォロワー一覧表示させる
-                  </div>
-                </div>
+                <!--後でフォローフォロワーでオフキャンバス分ける-->
+                <%= render 'relationships/relationship' %>
               </div>
             </div>
             <div class="col-1">
               <span class="h3">
-                <% if @user == current_user %>
+                <% if @user == current_user && current_user.name != "ゲストユーザー" %>
                   <%= link_to edit_user_path(@user), class: "text-decoration-none text-dark" do %>
                     <i class="fa-solid fa-user-gear"></i>
                   <% end %>
@@ -99,17 +68,7 @@
                 <p><%= post.spot %></p>
               </div>
               <div class="col-3">
-                <% if user_signed_in? %>
-                  <% if post.bookmarked_by?(current_user) %>
-                    <%= link_to post_bookmarks_path(post), method: :delete do %>
-                      <span class="h3 text-dark"><i class="fa-solid fa-bookmark"></i></span>
-                    <% end %>
-                  <% else %>
-                    <%= link_to post_bookmarks_path(post), method: :post do %>
-                      <span class="h3 text-dark"><i class="fa-regular fa-bookmark"></i></span>
-                    <% end %>
-                  <% end %>
-                <% end %>
+                <%= render 'bookmarks/bookmark', post: post %>
               </div>
             </div>
             <div class="row">

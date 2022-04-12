@@ -1,0 +1,13 @@
+<% if current_user.name != "ゲストユーザー" %>
+  <% unless user == current_user %>
+    <% if current_user.following?(user) %>
+      <%= link_to user_relationships_path(user), method: :delete, class: "btn btn-dark btn-sm rounded-pill" do %>
+        <i class="fa-solid fa-user-minus"></i>　フォローを外す
+      <% end %>
+    <% else %>
+      <%= link_to user_relationships_path(user), method: :post, class: "btn btn-dark btn-sm rounded-pill" do %>
+        <i class="fa-solid fa-user-plus"></i>　フォローする
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

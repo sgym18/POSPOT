@@ -13,4 +13,5 @@ class BookmarksController < ApplicationController
     bookmark.destroy
     redirect_to request.referer
   end
+  
 end

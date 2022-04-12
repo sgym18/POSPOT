@@ -1,0 +1,29 @@
+<div class="row">
+  <h4 class="text-center">コメント（<%= post.post_comments.count %>件）</h4>
+</div>
+<div class="row my-2">
+  <% if current_user.name != "ゲストユーザー" %>
+    <%= form_with model: [post, post_comment] do |f| %>
+      <%= f.text_area :comment, rows: "3", placeholder: "コメントを入力", class: "form-control" %>
+      <div class="d-grid">
+        <%= f.submit "コメントを送信", class: "btn btn-dark" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<% post.post_comments.each do |comment| %>
+  <div class="row pb-2 d-flex align-items-start border-bottom">
+    <div class="col-2 pt-2">
+      <%= image_tag comment.user.get_profile_image(50,50), class: "rounded-circle" %>
+    </div>
+    <div class="col-10 pt-2">
+      <p class="text-break">
+        <strong class="h5"><%= comment.user.name %></strong>
+        <%= comment.comment %>
+        <% if comment.user == current_user %>
+          <%= link_to "削除", post_post_comment_path(comment.post, comment), method: :delete, data: { confirm: "コメントを削除しますか？"}, class: "btn btn-danger btn-sm" %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+<% end %>

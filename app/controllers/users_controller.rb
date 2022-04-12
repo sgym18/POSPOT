@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  
+  before_action :ensure_guest_user, only: [:edit, :update, :quit_confirm, :quit]
+
   def index
     @users = User.all
   end
@@ -36,7 +37,14 @@ class UsersController < ApplicationController
   end
 
   private
-  
+
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.name == "ゲストユーザー"
+      redirect_to user_path(current_user), notice: "ゲストユーザーができるのは閲覧のみです。"
+    end
+  end
+
   def user_params
     params.require(:user).permit(:name, :introduction, :address, :profile_image)
   end
