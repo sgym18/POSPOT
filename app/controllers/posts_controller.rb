@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :ensure_guest_user, only: [:new, :edit]
 
   def index
     @posts = Post.all
@@ -46,7 +47,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path
+    redirect_to posts_path, notice: "投稿を削除しました"
   end
 
   def map
@@ -58,6 +59,14 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def ensure_guest_user
+    @user = current_user
+    if @user.name == "ゲストユーザー"
+      redirect_to posts_path, notice: "ゲストユーザーができるのは閲覧のみです。"
+    end
+  end
+
   def post_params
     params.require(:post).permit(:spot, :caption, :address, :image)
   end
