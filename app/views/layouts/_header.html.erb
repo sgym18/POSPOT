@@ -1,5 +1,11 @@
 <!--あとでパス変更する。users,profile-->
-<div class="container">
+<div class="container-fluid">
+  <div class="row justify-content-end pt-2">
+    <div class="col-3 offset-9">
+      <%= render 'searches/form' %>
+    </div>
+  </div>
+
   <div class="row d-flex align-items-center justify-content-center text-center py-4">
     <% if user_signed_in? %>
       <div class="col">
@@ -38,6 +44,5 @@
         <%= link_to "Log in", new_user_session_path, class: "btn btn-dark rounded-pill" %>
       </div>
     <% end %>
-    <%= render 'searches/form' %>
   </div>
 </div>
