@@ -43,6 +43,12 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path
+  end
+
   def map
     results = Geocoder.search(params[:address])
     @latlng = results.first.coordinates
