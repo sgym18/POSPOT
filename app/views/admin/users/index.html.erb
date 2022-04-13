@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <h3 class="mb-5">Users</h3>
+    </div>
+  </div>
+  <div class='row justify-content-center'>
+    <div class="col-8 px-5 px-sm-0">
+      <table class="table table-dark table-borderless table-hover text-light">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.id %></td>
+              <td>
+                <%= link_to admin_user_path(user), class: "text-light" do %>
+                  <%= user.name %>
+                <% end %>
+              </td>
+              <td><%= user.email %></td>
+              <% if user.is_deleted == true %>
+                <td class="text-danger font-weight-bold">退会</td>
+              <% else %>
+                <td class="text-success font-weight-bold">有効</td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
