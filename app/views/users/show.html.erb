@@ -11,8 +11,7 @@
           <%= link_to "新規投稿", new_post_path, class: "btn btn-outline-dark rounded-pill w-100" %>
         </div>
         <div class="col text-center">
-          <!--後でリンク変える-->
-          <%= link_to "ブックマーク", root_path, class: "btn btn-outline-dark rounded-pill w-100" %>
+          <%= link_to "ブックマーク", posts_path(id: current_user.id), class: "btn btn-outline-dark rounded-pill w-100" %>
         </div>
       </div>
       <div class="row my-2">
