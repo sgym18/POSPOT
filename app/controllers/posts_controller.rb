@@ -3,6 +3,12 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    if params[:id]
+      @user = current_user
+      @bookmarks = @user.bookmarks
+    else
+      @posts = Post.all
+    end
     gon.user = current_user
   end
 

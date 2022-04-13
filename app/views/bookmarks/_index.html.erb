@@ -1,0 +1,26 @@
+<% bookmarks.each do |bookmark| %>
+  <div class="col-7">
+    <%= link_to post_path(bookmark.post) do %>
+      <p><%= image_tag bookmark.post.get_image(250,150) %></p>
+    <% end %>
+  </div>
+  <div class="col-5">
+    <div class="row">
+      <div class="col-9">
+        <p><%= bookmark.post.spot %></p>
+      </div>
+      <div class="col-3">
+        <%= render 'bookmarks/bookmark', post: bookmark.post %>
+      </div>
+    </div>
+    <div class="row">
+      <% bookmark.post.tags.each do |tag| %>
+        <div class="col-auto flex-wrap">
+          <span class="text-white bg-dark border border-dark rounded small px-1">
+            #<%= tag.name %>
+          </span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
