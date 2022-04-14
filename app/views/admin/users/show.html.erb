@@ -1,47 +1,76 @@
-<div class="container-fluid col-5 mx-auto mt-5">
+<div class="container-fluid col-8 mx-auto mt-5">
   <div class="row">
-    <h3 class="mb-5">User編集</h3>
-  </div>
-
-  <div class="row">
-    <%= form_with model: [ :admin, @user ] do |f| %>
-      <div class="mb-3">
-        <%= f.label :name %>
-        <%= f.text_field :name, autofocus: true, placeholder: "名前", class: 'form-control' %>
+    <div class="col-6">
+      <div class="row">
+        <h3 class="mb-5">User情報</h3>
       </div>
-
-      <div class="mb-3">
-        <%= f.label :introduction, "自己紹介" %>
-      　<%= f.text_area :introduction, placeholder: "自己紹介", class: 'form-control', rows: "3" %>
+      <div class="row">
+        <table class="table table-bordered">
+          <tr>
+            <td><strong>Name</strong></td>
+            <td class="ps-3"><%= @user.name %></td>
+          </tr>
+          <tr>
+            <td class="text-nowrap"><strong>自己紹介</strong></td>
+            <td class="ps-3 text-break"><%= @user.introduction %></td>
+          </tr>
+          <tr>
+            <td><strong>住所</strong></td>
+            <td class="ps-3"><%= @user.address %></td>
+          </tr>
+          <tr>
+            <td><strong>ステータス</strong></td>
+            <% if @user.is_deleted == true %>
+              <td class="ps-3 text-danger font-weight-bold">退会</td>
+            <% else %>
+              <td class="ps-3 text-success font-weight-bold">有効</td>
+            <% end %>
+          </tr>
+        </table>
       </div>
+    </div>
+    <div class="col-6">
+      <h3 class="mb-5">User編集</h3>
 
-      <div class="mb-3">
-        <%= f.label :address, "住所" %>
-        <%= f.text_field :address, placeholder: "住所", class: 'form-control' %>
-      </div>
+      <%= form_with model: [ :admin, @user ] do |f| %>
+        <div class="form-floating mb-3">
+          <%= f.text_field :name, autofocus: true, placeholder: "名前", id: "floatingName", class: 'form-control' %>
+          <%= f.label :name, for: "floatingName" %>
+        </div>
+        <!--なんではみだすの？-->
+        <div class="form-floating mb-3">
+        　<%= f.text_area :introduction, placeholder: "自己紹介", id: "floatingTextarea2", class: "form-control",  style: "height: 100px" %>
+          <%= f.label :introduction, "住所", for: "floatingTextarea2" %>
+        </div>
 
-      <div class="mb-3">
-        <%= f.label :profile_image, "画像" %>
-        <%= f.file_field :profile_image, accept: "image/*", class: 'form-control' %>
-      </div>
+        <div class="form-floating mb-3">
+          <%= f.text_field :address, placeholder: "住所", id: "floatingAddress", class: 'form-control' %>
+          <%= f.label :address, "住所", for: "floatingAddress" %>
+        </div>
 
-      <div class="mb-3 d-flex justify-content-center">
-        <!--こっちのボタンにしたい-->
-        <%#= f.radio_button :is_deleted, false, class: "btn-check", name: "options-outlined", id: "success-outlined", autocomplete: "off" %>
-        <%#= f.label :is_deleted, "有効", class: "btn btn-outline-success me-2 flex-fill", for: "success-outlined" %>
-        <%#= f.radio_button :is_deleted, true, class: "btn-check", name: "options-outlined", id: "danger-outlined", autocomplete: "off" %>
-        <%#= f.label :is_deleted, "退会", class: "btn btn-outline-danger flex-fill", for: "danger-outlined" %>
-        <%= f.radio_button :is_deleted, false %><%= f.label :is_deleted, "有効", value: true %>
-        <%= f.radio_button :is_deleted, true %><%= f.label :is_deleted, "退会", value: false %>
-      </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroupFileAddon01">アイコン</span>
+          <%= f.file_field :profile_image, accept: "image/*", class: 'form-control' %>
+        </div>
 
-      <div class="d-grid">
-        <%= f.submit "変更を保存", class: "btn btn-lg btn-dark" %>
+        <div class="btn-group mb-3 d-flex justify-content-center">
+          <!--こっちのボタンにしたいけど保存されない-->
+          <%= f.radio_button :is_deleted, false, class: "btn-check", name: "options-outlined", id: "success-outlined", autocomplete: "off" %>
+          <%= f.label :is_deleted, "有効", for: "success-outlined", value: false, class: "btn btn-outline-success flex-fill" %>
+          <%= f.radio_button :is_deleted, true, class: "btn-check", name: "options-outlined", id: "danger-outlined", autocomplete: "off" %>
+          <%= f.label :is_deleted, "退会", for: "danger-outlined", value: true, class: "btn btn-outline-danger flex-fill" %>
+          <%#= f.radio_button :is_deleted, false %><%#= f.label :is_deleted, "有効", value: true %>
+          <%#= f.radio_button :is_deleted, true %><%#= f.label :is_deleted, "退会", value: false %>
+        </div>
+
+        <div class="d-grid">
+          <%= f.submit "変更を保存", class: "btn btn-lg btn-dark" %>
+        </div>
+      <% end %>
+      <!--後でカラー変更-->
+      <div class="d-grid mt-3">
+        <%= link_to "User一覧へ戻る", admin_users_path, class: "btn btn-lg btn-dark" %>
       </div>
-    <% end %>
-    <!--後でカラー変更-->
-    <div class="d-grid mt-3">
-      <%= link_to "User一覧へ戻る", admin_users_path, class: "btn btn-lg btn-dark" %>
     </div>
   </div>
 </div>
