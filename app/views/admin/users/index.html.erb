@@ -2,9 +2,12 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <h3 class="mb-5">Users</h3>
+      <%= link_to "全ユーザー", admin_users_path, class: "btn btn-dark rounded-pill" %>
+      <%= link_to "有効中ユーザー", admin_users_path(status: "有効"), class: "btn btn-success rounded-pill" %>
+      <%= link_to "退会済ユーザー  ", admin_users_path(status: "退会"), class: "btn btn-danger rounded-pill" %>
     </div>
   </div>
-  <div class='row justify-content-center'>
+  <div class='row justify-content-center mt-2'>
     <div class="col-8 px-5 px-sm-0">
       <table class="table table-dark table-borderless table-hover text-light">
         <thead>

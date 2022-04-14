@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
 
   # バリデーション
-  validates :name, length: { minimum: 1, maximum: 30 }, presence: true
+  validates :name, length: { minimum: 1, maximum: 30 }, presence: true, uniqueness: true
 
 
   # 経度、緯度取得のため記述
@@ -23,7 +23,7 @@ class User < ApplicationRecord
   after_validation :geocode
 
   has_one_attached :profile_image
-  
+
   # 画像リサイズのため
   def get_profile_image(width, height)
   unless profile_image.attached?
@@ -57,5 +57,5 @@ class User < ApplicationRecord
   def self.search_for(keyword)
     User.where(['name LIKE(?) OR introduction LIKE(?)',"%#{keyword}%","%#{keyword}%"])
   end
-  
+
 end
