@@ -14,13 +14,6 @@
         <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", id: "floatingPassword", class: "form-control" %>
         <%= f.label :password, "パスワード", for: "floatingPassword" %>
       </div>
-      <!--ログイン保持実装後で決める-->
-      <!--<%# if devise_mapping.rememberable? %>-->
-      <!--  <div class="field">-->
-      <!--    <%#= f.check_box :remember_me %>-->
-      <!--    <%#= f.label :remember_me %>-->
-      <!--  </div>-->
-      <!--<%# end %>-->
 
       <div class="actions d-grid">
         <%= f.submit "ログイン", class: "btn btn-lg btn-dark" %>

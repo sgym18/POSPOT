@@ -2,7 +2,13 @@ class Admin::UsersController < ApplicationController
   before_action :if_not_admin
 
   def index
-    @users = User.all
+    if params[:status] == "有効"
+      @users = User.where(is_deleted: false)
+    elsif params[:status] == "退会"
+      @users = User.where(is_deleted: true)
+    else
+      @users = User.all
+    end
   end
 
   def show
@@ -25,6 +31,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :introduction, :address, :profile_image, :is_deleted)
+    params.require(:user).permit(:name, :introduction, :address, :is_deleted)
   end
 end
