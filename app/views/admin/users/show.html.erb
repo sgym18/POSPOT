@@ -37,10 +37,10 @@
           <%= f.text_field :name, autofocus: true, placeholder: "名前", id: "floatingName", class: 'form-control' %>
           <%= f.label :name, for: "floatingName" %>
         </div>
-        <!--なんではみだすの？-->
+
         <div class="form-floating mb-3">
-        　<%= f.text_area :introduction, placeholder: "自己紹介", id: "floatingTextarea2", class: "form-control",  style: "height: 100px" %>
-          <%= f.label :introduction, "住所", for: "floatingTextarea2" %>
+          <%= f.text_area :introduction, placeholder: "自己紹介", id: "floatingTextarea", class: "form-control" %>
+          <%= f.label :introduction, "自己紹介", for: "floatingTextarea" %>
         </div>
 
         <div class="form-floating mb-3">
