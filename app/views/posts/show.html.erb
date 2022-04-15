@@ -4,19 +4,23 @@
       <div class="row mb-2">
         <div class="col-4">
           <div class="row">
-            <p class="text-center"><%= image_tag @post.user.get_profile_image(150,150), class: "mx-auto rounded-circle" %></p>
+            <p class="text-center">
+              <%= link_to user_path(@post.user) do %>
+                <%= image_tag @post.user.get_profile_image(150,150), class: "mx-auto rounded-circle" %>
+              <% end %>
+            </p>
           </div>
           <div class="row">
-            <p class="h4 text-center"><%= @post.user.name %></p>
+            <p class="h4 text-center text-light"><%= @post.user.name %></p>
           </div>
         </div>
 
         <div class="col-8">
-          <div class="row">
+          <div class="row text-light">
             <div class="col-10">
               <h3><%= @post.spot %></h3>
               <% @post.tags.each do |tag| %>
-                <span class="text-white bg-dark border border-dark rounded small px-1">
+                <span class="text-light bg-dark border border-dark rounded small px-1">
                   #<%= tag.name %>
                 </span>
               <% end %>
@@ -25,7 +29,7 @@
             <div class="col-2">
               <% if @post.user == current_user && current_user.name != "ゲストユーザー" %>
                 <span class="h3">
-                  <%= link_to edit_post_path(@post), class: "text-decoration-none text-dark" do %>
+                  <%= link_to edit_post_path(@post), class: "text-decoration-none text-primary" do %>
                     <i class="fa-solid fa-pen-to-square"></i>
                   <% end %>
                 </span>
