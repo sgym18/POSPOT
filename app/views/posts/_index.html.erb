@@ -1,26 +1,30 @@
 <% posts.each do |post| %>
-  <div class="col-7">
-    <%= link_to post_path(post) do %>
-      <p><%= image_tag post.get_image(250,150) %></p>
-    <% end %>
-  </div>
-  <div class="col-5">
+  <div class="card shadow mb-3">
     <div class="row">
-      <div class="col-9">
-        <p><%= post.spot %></p>
+      <div class="col-7">
+        <%= link_to post_path(post) do %>
+          <%= image_tag post.get_image(250,150), class: "card-img" %>
+        <% end %>
       </div>
-      <div class="col-3">
-        <%= render 'bookmarks/bookmark', post: post %>
-      </div>
-    </div>
-    <div class="row">
-      <% post.tags.each do |tag| %>
-        <div class="col-auto flex-wrap">
-          <span class="text-white bg-dark border border-dark rounded small px-1">
-            #<%= tag.name %>
-          </span>
+      <div class="card-body col-5">
+        <div class="row">
+          <div class="col-9">
+            <h5><%= post.spot %></h5>
+          </div>
+          <div class="col-3">
+            <%= render 'bookmarks/bookmark', post: post %>
+          </div>
         </div>
-      <% end %>
+        <div class="row">
+          <% post.tags.each do |tag| %>
+            <div class="col-auto flex-wrap">
+              <span class="text-white bg-dark border border-dark rounded small px-1">
+                #<%= tag.name %>
+              </span>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>

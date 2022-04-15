@@ -1,19 +1,19 @@
 <div class="col-3">
-  <button class="btn btn-dark" data-bs-toggle="offcanvas" data-bs-target="#follower" aria-controls="offcanvasRight">
+  <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#follower" aria-controls="offcanvasRight">
     フォロワー
   </button>
 </div>
 <div class="col-3">
-  <button class="btn btn-dark" data-bs-toggle="offcanvas" data-bs-target="#followings" aria-controls="offcanvasRight">
+  <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#followings" aria-controls="offcanvasRight">
     フォロー中
   </button>
 </div>
 <div class="offset-6"></div>
 
-<div class="offcanvas offcanvas-end"  tabindex="-1" id="follower" aria-labelledby="offcanvasRightLabel">
+<div class="offcanvas offcanvas-end bg-dark"  tabindex="-1" id="follower" aria-labelledby="offcanvasRightLabel">
   <div class="offcanvas-header">
-    <h5 id="offcanvasRightLabel">フォロワー</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="閉じる"></button>
+    <h5 id="offcanvasRightLabel" class="text-light">フォロワー</h5>
+    <button type="button" class="btn-close text-reset text-light" data-bs-dismiss="offcanvas" aria-label="閉じる"></button>
   </div>
   <div class="offcanvas-body">
     <% if @followers.exists? %>
@@ -24,9 +24,9 @@
   </div>
 </div>
 
-<div class="offcanvas offcanvas-end"  tabindex="-1" id="followings" aria-labelledby="offcanvasRightLabel">
+<div class="offcanvas offcanvas-end bg-dark"  tabindex="-1" id="followings" aria-labelledby="offcanvasRightLabel">
   <div class="offcanvas-header">
-    <h5 id="offcanvasRightLabel">フォロー中</h5>
+    <h5 id="offcanvasRightLabel" class="text-light">フォロー中</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="閉じる"></button>
   </div>
   <div class="offcanvas-body">

@@ -1,29 +1,37 @@
 <div class="row">
-  <h4 class="text-center">コメント（<%= post.post_comments.count %>件）</h4>
+  <h4 class="text-center text-light">コメント（<%= post.post_comments.count %>件）</h4>
 </div>
-<div class="row my-2">
+<div class="row my-3">
   <% if current_user.name != "ゲストユーザー" %>
     <%= form_with model: [post, post_comment] do |f| %>
       <%= f.text_area :comment, rows: "3", placeholder: "コメントを入力", class: "form-control" %>
       <div class="d-grid">
-        <%= f.submit "コメントを送信", class: "btn btn-dark" %>
+        <%= f.button :type => "submit", class: "btn btn-primary" do %>
+          <i class="fa-solid fa-paper-plane"></i> 送信
+        <% end %>
       </div>
     <% end %>
   <% end %>
 </div>
-<% post.post_comments.each do |comment| %>
-  <div class="row pb-2 d-flex align-items-start border-bottom">
-    <div class="col-2 pt-2">
+<div class="row overflow-auto h-50">
+  <% post.post_comments.each do |comment| %>
+  <div class="card mb-3 shadow">
+    <div class="pt-2">
       <%= image_tag comment.user.get_profile_image(50,50), class: "rounded-circle" %>
     </div>
-    <div class="col-10 pt-2">
-      <p class="text-break">
+    <% if comment.user == current_user %>
+      <span>
+        <%= link_to post_post_comment_path(comment.post, comment), method: :delete, data: { confirm: "コメントを削除しますか？"}, class: "btn btn-danger btn-sm rounded-pill position-absolute top-0 end-0" do %>
+          <i class="fa-solid fa-trash-can"></i>
+        <% end %>
+      </span>
+    <% end %>
+    <div class="card-body pt-2">
+      <p class="card-text text-break">
         <strong class="h5"><%= comment.user.name %></strong>
         <%= comment.comment %>
-        <% if comment.user == current_user %>
-          <%= link_to "削除", post_post_comment_path(comment.post, comment), method: :delete, data: { confirm: "コメントを削除しますか？"}, class: "btn btn-danger btn-sm" %>
-        <% end %>
       </p>
     </div>
   </div>
 <% end %>
+</div>

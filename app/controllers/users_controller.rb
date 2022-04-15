@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :ensure_guest_user, only: [:show, :edit, :update, :quit_confirm, :quit]
+  before_action :ensure_guest_user, only: [:edit, :update, :quit_confirm, :quit]
 
   def index
     @users = User.all

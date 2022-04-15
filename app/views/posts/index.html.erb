@@ -1,37 +1,31 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-8">
-      <div class="row">
-        <div class="col">
-          <%= form_with url: map_request_path, method: :get, local: false do |f| %>
-            <%= f.text_field :address, placeholder: "住所で検索", class: "form-control rounded-pill" %>
-          <% end %>
-        </div>
-        <div class="col text-center">
-          <%= link_to "新規投稿", new_post_path, class: "btn btn-outline-dark rounded-pill w-100" %>
-        </div>
-        <div class="col text-center">
-          <%= link_to "ブックマーク", posts_path(id: current_user.id), class: "btn btn-outline-dark rounded-pill w-100" %>
-        </div>
+      <div class="row pt-2">
+        <%= render 'navbar' %>
       </div>
       <div class="row mt-2 justify-content-center">
-        <div id="index_map"></div>
+        <div id="index_map" class=""></div>
       </div>
     </div>
     <div class="col-4">
       <% if params[:id] %>
         <div class="row">
-          <h4 class="text-center">ブックマーク一覧</h4>
+          <h4 class="text-center text-light">ブックマーク一覧</h4>
         </div>
         <div class="row mt-2">
-          <%= render 'bookmarks/index', bookmarks: @bookmarks %>
+          <div class="col-12">
+            <%= render 'bookmarks/index', bookmarks: @bookmarks %>
+          </div>
         </div>
       <% else %>
         <div class="row">
-          <h4 class="text-center">投稿一覧</h4>
+          <h4 class="text-center text-light">投稿一覧</h4>
         </div>
         <div class="row mt-2">
-          <%= render 'index', posts: @posts %>
+          <div class="col-12">
+            <%= render 'index', posts: @posts %>
+          </div>
         </div>
       <% end %>
     </div>
@@ -46,7 +40,7 @@
   function initMap(){
     mapInstance = new google.maps.Map(document.getElementById('index_map'), {
     center: {lat: gon.user.latitude, lng: gon.user.longitude},
-    zoom: 8
+    zoom: 10
     });
   }
 </script>
