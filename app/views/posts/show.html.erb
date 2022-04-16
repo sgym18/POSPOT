@@ -59,26 +59,51 @@
 
 <script>
   let map
+  let post = gon.post
 
   function initMap(){
     geocoder = new google.maps.Geocoder()
 
     map = new google.maps.Map(document.getElementById('show_map'), {
-      center: {lat: gon.post.latitude, lng: gon.post.longitude},
-      zoom: 12,
+      center: {lat: post.latitude, lng: post.longitude},
+      zoom: 15,
+      mapTypeControl: false,
+      styles: [
+        {
+          featureType: 'all',
+          elementType: 'labels',
+          stylers: [
+            {visibility: 'off'},
+          ],
+        },
+        {
+          featureType: 'all',
+          elementType: 'all',
+          stylers: [
+            {visibility: 'inherit'},
+          ],
+        },
+        {
+          featureType: 'all',
+          elementType: 'all',
+          stylers: [
+            {hue: '#0F222D'},
+            {saturation : -70},
+          ],
+        }
+      ]
     });
 
     (function(){
       var contentString = "住所：<%= @post.address %>";
 
       var marker = new google.maps.Marker({
-        position:{lat: gon.post.latitude, lng: gon.post.longitude},
+        position:{lat: post.latitude, lng: post.longitude},
         map: map,
         title: contentString
       });
     })();
   }
 </script>
-
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_KEY'] %>&callback=initMap" async defer></script>
