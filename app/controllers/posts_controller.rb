@@ -9,6 +9,7 @@ class PostsController < ApplicationController
     else
       @posts = Post.all
     end
+    gon.posts = @posts
     gon.user = current_user
   end
 
