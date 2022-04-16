@@ -18,6 +18,11 @@
       </div>
 
       <div class="form-floating mb-3">
+        <%= f.text_field :address,  autocomplete: "address", placeholder: "東京都新宿区○○町", id: "floatingAddress", class: 'form-control' %>
+        <%= f.label :address, "マップの中心にしたい住所", for: "floatingAddress" %>
+      </div>
+
+      <div class="form-floating mb-3">
         <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード", class: 'form-control' %>
         <%= f.label :password, "パスワード（#{@minimum_password_length}文字以上）" %>
       </div>

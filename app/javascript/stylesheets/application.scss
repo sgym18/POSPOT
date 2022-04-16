@@ -5,6 +5,10 @@ $box-shadow: 0 .5rem 1rem rgba(29, 120, 116);
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+html, body {
+  height: 100vh;
+}
+
 body {
   background-image: linear-gradient(0deg, transparent calc(100% - 1px), #142E3D calc(100% - 1px)),
                     linear-gradient(90deg, transparent calc(100% - 1px), #142E3D calc(100% - 1px));
