@@ -8,13 +8,13 @@
     <%= include_gon %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
+
   </head>
 
   <body>
     <header>
       <%= render 'layouts/header' %>
-      <div class="notice text-success text-center mt-3"><%= flash[:notice] %></div>
+      <div class="notice text-success text-center mt-3" id="notice"><%= flash[:notice] %></div>
     </header>
     <main class="mt-3">
     <%= yield %>

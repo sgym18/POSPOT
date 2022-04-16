@@ -1,0 +1,12 @@
+<div class="row my-3">
+  <% if current_user.name != "ゲストユーザー" %>
+    <%= form_with model: [post, post_comment], local: false do |f| %>
+      <%= f.text_area :comment, rows: "3", placeholder: "コメントを入力", class: "form-control" %>
+      <div class="d-grid">
+        <%= f.button :type => "submit", class: "btn btn-primary" do %>
+          <i class="fa-solid fa-paper-plane"></i> 送信
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

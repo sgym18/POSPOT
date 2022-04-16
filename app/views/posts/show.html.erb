@@ -26,15 +26,19 @@
               <% end %>
               <p class="text-break"><%= @post.caption %></p>
             </div>
-            <div class="col-2">
-              <% if @post.user == current_user && current_user.name != "ゲストユーザー" %>
-                <span class="h3">
-                  <%= link_to edit_post_path(@post), class: "text-decoration-none text-primary" do %>
-                    <i class="fa-solid fa-pen-to-square"></i>
-                  <% end %>
-                </span>
-              <% end %>
-              <%= render 'bookmarks/bookmark', post: @post %>
+            <div class="col-2 d-flex">
+              <div>
+                <% if @post.user == current_user && current_user.name != "ゲストユーザー" %>
+                  <span class="h3">
+                    <%= link_to edit_post_path(@post), class: "text-decoration-none text-primary" do %>
+                      <i class="fa-solid fa-pen-to-square"></i>
+                    <% end %>
+                  </span>
+                <% end %>
+              </div>
+              <div class="ms-1" id="bookmark_<%= @post.id %>">
+                <%= render 'bookmarks/bookmark', post: @post %>
+              </div>
             </div>
           </div>
         </div>
@@ -51,7 +55,13 @@
     </div>
 
     <div class="col-3">
-      <%= render 'post_comments/comment', post: @post, post_comment: @post_comment %>
+      <div class="row">
+        <h4 class="text-center text-light" id="comment_count">コメント（<%= @post.post_comments.count %>件）</h4>
+      </div>
+      <%= render 'post_comments/form',  post: @post, post_comment: @post_comment %>
+      <div class="row" id="post_comments">
+        <%= render 'post_comments/comment', post: @post %>
+      </div>
     </div>
   </div>
 </div>
