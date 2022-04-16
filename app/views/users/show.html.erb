@@ -87,27 +87,32 @@
 </div>
 
 <script>
-  let map
+  let map;
+  let marker = [];
+  let markerData = gon.posts;
+  let user = gon.user
 
   function initMap() {
-    goecoder = new google.maps.Geocoder()
-    var test = {lat: gon.user.latitude, lng: gon.user.longitude};
+    geocoder = new google.maps.Geocoder()
 
-    map = new google.maps.Map(document.getElementById('user_map'),{
-      center: test,
-      zoom: 15,
+    map = new google.maps.Map(document.getElementById('user_map'), {
+      center: { lat: gon.user.latitude, lng: gon.user.longitude },
+      zoom: 9,
     });
 
-    var contentString = '住所：<%= @user.address %>';
-    var infowindow = new google.maps.InfoWindow({
-      content: contentString
-    });
+    for (var i = 0; i < markerData.length; i++) {
+      let id = markerData[i]['id']
 
-    marker = new google.maps.Marker({
-      position: test,
-      map: map,
-      title: contentString
-    });
+      markerLatLng = new google.maps.LatLng({
+        lat: markerData[i]['latitude'],
+        lng: markerData[i]['longitude']
+      });
+
+      marker[i] = new google.maps.Marker({
+        position: markerLatLng,
+        map: map
+      });
+    }
   }
 </script>
 

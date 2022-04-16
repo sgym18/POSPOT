@@ -16,7 +16,7 @@ class User < ApplicationRecord
 
   # バリデーション
   validates :name, length: { minimum: 1, maximum: 30 }, presence: true, uniqueness: true
-
+  validates :address, presence: true
 
   # 経度、緯度取得のため記述
   geocoded_by :address

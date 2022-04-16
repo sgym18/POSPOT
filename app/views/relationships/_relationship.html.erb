@@ -19,7 +19,7 @@
     <% if @followers.exists? %>
       <%= render 'users/index', users: @followers %>
     <% else %>
-      <p>ユーザーはいません</p>
+      <p class="text-light">ユーザーはいません</p>
     <% end %>
   </div>
 </div>
@@ -33,7 +33,7 @@
     <% if @followings.exists? %>
       <%= render 'users/index', users: @followings %>
     <% else %>
-      <p>ユーザーはいません</p>
+      <p class="text-light">ユーザーはいません</p>
     <% end %>
   </div>
 </div>
