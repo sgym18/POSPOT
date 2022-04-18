@@ -57,11 +57,13 @@
         aria-labelledby="post-tab"
       >
         <div class="row mt-2">
-          <% if @post_result.present? %>
-            <%= render 'posts/index', posts: @post_result %>
-          <% else %>
-            検索結果はありません
-          <% end %>
+          <div class="col-12">
+            <% if @post_result.present? %>
+              <%= render 'posts/index', posts: @post_result %>
+            <% else %>
+              <p class="text-light">検索結果はありません</p>
+            <% end %>
+          </div>
         </div>
       </div>
       <div
@@ -71,7 +73,13 @@
         aria-labelledby="tag-tab"
       >
         <div class="row mt-2">
-          <%= render 'posts/index', posts: @tag_result %>
+          <div class="col-12">
+            <% if @tag_result.present? %>
+              <%= render 'posts/index', posts: @tag_result %>
+            <% else %>
+              <p class="text-light">検索結果はありません</p>
+            <% end %>
+          </div>
         </div>
       </div>
       <div
@@ -80,7 +88,11 @@
         role="tabpanel"
         aria-labelledby="user-tab"
       >
-        <%= render 'users/index', users: @user_result %>
+        <% if @user_result.present? %>
+          <%= render 'users/index', users: @user_result %>
+        <% else %>
+          <p class="text-light">検索結果はありません</p>
+        <% end %>
       </div>
     </div>
   </div>

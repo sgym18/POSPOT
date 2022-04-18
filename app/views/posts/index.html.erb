@@ -14,14 +14,18 @@
           <h4 class="text-center text-light">ブックマーク一覧</h4>
         </div>
         <div class="row mt-2">
-          <%= render 'bookmarks/index', bookmarks: @bookmarks %>
+          <div class="col-12">
+            <%= render 'bookmarks/index', bookmarks: @bookmarks %>
+          </div>
         </div>
       <% else %>
         <div class="row">
           <h4 class="text-center text-light">投稿一覧</h4>
         </div>
         <div class="row mt-2">
-          <%= render 'index', posts: @posts %>
+          <div class="col-12">
+            <%= render 'index', posts: @posts %>
+          </div>
         </div>
       <% end %>
     </div>
