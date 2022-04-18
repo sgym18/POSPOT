@@ -1,17 +1,11 @@
-<% if user_signed_in? && current_user.name != "ゲストユーザー" %>
-  <div class="col-2 offset-7">
-    <% if current_user.admin? %>
-      <%= link_to "管理者用ページ", admin_users_path, class: "btn btn-dark rounded-pill" %>
-    <% end %>
-  </div>
-  <div class="col-3">
-    <%= form_with url: search_path, method: :get, local: true do |f| %>
-      <div class="d-flex">
-        <%= f.text_field :keyword, placeholder: "キーワードを入力", class: "form-control rounded-pill" %>
-        <%= f.button :type => "submit", class: 'btn neon-btn rounded-pill' do %>
-          <i class="fa-solid fa-magnifying-glass"></i>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+<div class="col-3">
+  <%= form_with url: search_path, method: :get, local: true do |f| %>
+    <div class="d-flex">
+      <%= f.text_field :keyword, placeholder: "キーワードを入力", class: "form-control rounded-pill" %>
+      <%= f.button :type => "submit", class: 'btn neon-btn rounded-pill' do %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+

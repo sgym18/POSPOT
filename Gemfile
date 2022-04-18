@@ -61,6 +61,7 @@ gem 'gon'
 gem 'geocoder'
 gem 'rails-i18n'
 gem 'devise-i18n-views'
+gem 'kaminari'
 
 group :production do
   gem 'mysql2'

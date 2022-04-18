@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit, :update, :quit_confirm, :quit]
 
   def index
-    @users = User.all
+    @users = User.page(params[:page]).per(5)
   end
 
   def show
