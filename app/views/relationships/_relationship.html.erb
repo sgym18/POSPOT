@@ -1,11 +1,11 @@
 <div class="col-3">
-  <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#follower" aria-controls="offcanvasRight">
-    フォロワー
+  <button class="btn btn-primary shadow-sm" data-bs-toggle="offcanvas" data-bs-target="#follower" aria-controls="offcanvasRight">
+    <strong><%= @followers.count %></strong> フォロワー
   </button>
 </div>
 <div class="col-3">
-  <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#followings" aria-controls="offcanvasRight">
-    フォロー中
+  <button class="btn btn-primary shadow-sm" data-bs-toggle="offcanvas" data-bs-target="#followings" aria-controls="offcanvasRight">
+    <strong><%= @followings.count %></strong> フォロー中
   </button>
 </div>
 <div class="offset-6"></div>

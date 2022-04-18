@@ -6,7 +6,7 @@
       </div>
       <div class="row my-2">
         <div class="col-3">
-          <%= image_tag @user.get_profile_image(150,150), class: "mx-auto rounded-circle" %>
+          <%= image_tag @user.get_profile_image(150,150), class: "mx-auto rounded-circle border border-light shadow-sm" %>
         </div>
         <div class="col-9">
           <div class="row">
@@ -23,7 +23,7 @@
                   <%= render 'relationships/relationship' %>
                 </div>
               <% else %>
-                <h4 class="text-center">このユーザーは退会済みです。</h4>
+                <h4 class="text-center text-light">このユーザーは退会済みです。</h4>
               <% end %>
             </div>
             <div class="col-1">
@@ -98,6 +98,30 @@
     map = new google.maps.Map(document.getElementById('user_map'), {
       center: { lat: gon.user.latitude, lng: gon.user.longitude },
       zoom: 9,
+      styles: [
+        {
+          featureType: 'all',
+          elementType: 'labels',
+          stylers: [
+            {visibility: 'off'},
+          ],
+        },
+        {
+          featureType: 'all',
+          elementType: 'all',
+          stylers: [
+            {visibility: 'inherit'},
+          ],
+        },
+        {
+          featureType: 'all',
+          elementType: 'all',
+          stylers: [
+            {hue: '#0F222D'},
+            {saturation : -70},
+          ],
+        }
+      ]
     });
 
     for (var i = 0; i < markerData.length; i++) {
@@ -114,6 +138,27 @@
       });
     }
   }
+
+  function codeAddress() {
+    let inputAddress = document.getElementById('address').value;
+
+    geocoder.geocode({
+      'address': inputAddress
+    }, function (results, status) {
+      if(status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+        });
+
+        notice.textContent = "検索結果：" + results[0]. geometry.location
+      } else {
+        alert('該当する結果がありませんでした：' + status);
+      }
+    });
+  }
+
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_KEY'] %>&callback=initMap" async defer></script>

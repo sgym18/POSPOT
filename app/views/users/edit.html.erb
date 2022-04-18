@@ -2,7 +2,7 @@
   <div class="row py-3">
     <%= form_with model: @user do |f| %>
       <div class="form-floating mb-3">
-        <%= f.text_field :name, autofocus: true, placeholder: "名前", id: "floatingName", class: 'form-control' %>
+        <%= f.text_field :name, autofocus: true, placeholder: "名前", id: "floatingName", class: "form-control" %>
         <%= f.label :name, for: "floatingName" %>
       </div>
 
@@ -12,13 +12,13 @@
       </div>
 
       <div class="form-floating mb-3">
-        <%= f.text_field :address, placeholder: "住所", id: "floatingAddress", class: 'form-control' %>
+        <%= f.text_field :address, placeholder: "住所", id: "floatingAddress", class: "form-control" %>
         <%= f.label :address, "マップの中心にしたい住所", for: "floatingAddress" %>
       </div>
 
       <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroupFileAddon01">アイコン</span>
-        <%= f.file_field :profile_image, accept: "image/*", id: "inputGroupFile01", class: 'form-control' %>
+        <%= f.file_field :profile_image, accept: "image/*", id: "inputGroupFile01", class: "form-control" %>
       </div>
 
       <div class="d-grid">
@@ -30,7 +30,7 @@
       <%= link_to "退会する", quit_confirm_user_path(@user), class: "btn btn-lg btn-danger" %>
     </div>
     <div class="d-grid mt-3">
-      <%= link_to "Prosileへ戻る", user_path(@user), class: "btn btn-lg btn-dark" %>
+      <%= link_to "Profileへ戻る", user_path(@user), class: "btn btn-lg btn-outline-dark" %>
     </div>
   </div>
 </div>

@@ -1,11 +1,12 @@
 <div class="col">
-  <%= form_with url: map_request_path, method: :get, local: false do |f| %>
-    <%= f.text_field :address, placeholder: "住所で検索", class: "form-control rounded-pill" %>
-  <% end %>
+  <div class="d-flex">
+    <input id="address" type="textbox" value="" placeholder="住所で検索" class="form-control rounded-pill"></input>
+    <button onclick="codeAddress()" class="btn btn-outline-light rounded-pill"><i class="fa-solid fa-magnifying-glass"></i></button>
+  </div>
 </div>
 <div class="col text-center">
-  <%= link_to "新規投稿", new_post_path, class: "btn btn-light rounded-pill w-100" %>
+  <%= link_to "新規投稿", new_post_path, class: "btn btn-outline-light rounded-pill w-100" %>
 </div>
 <div class="col text-center">
-  <%= link_to "ブックマーク", posts_path(id: current_user.id), class: "btn  btn-light rounded-pill w-100" %>
+  <%= link_to "ブックマーク", posts_path(id: current_user.id), class: "btn  btn-outline-light rounded-pill w-100" %>
 </div>

@@ -2,19 +2,7 @@
   <div class="row">
     <div class="col-8">
       <div class="row">
-        <div class="col">
-          <%#= form_with url: map_request_path, method: :get, local: false do |f| %>
-            <%#= f.text_field :address, placeholder: "住所で検索", class: "form-control rounded-pill" %>
-          <%# end %>
-          <input id="address" type="textbox" value="" placeholder="住所を入力" class="form-control rounded-pill"></input>
-          <input type="button" value="検索" onclick="codeAddress()" class="btn btn-light rounded-pill"></input>
-        </div>
-        <div class="col text-center">
-          <%= link_to "新規投稿", new_post_path, class: "btn btn-outline-dark rounded-pill w-100" %>
-        </div>
-        <div class="col text-center">
-          <%= link_to "ブックマーク", posts_path(id: current_user.id), class: "btn btn-outline-dark rounded-pill w-100" %>
-        </div>
+        <%= render 'posts/navbar' %>
       </div>
       <div class="row mt-2 justify-content-center">
         <div id="index_map"></div>
@@ -23,14 +11,14 @@
     <div class="col-4">
       <% if params[:id] %>
         <div class="row">
-          <h4 class="text-center">ブックマーク一覧</h4>
+          <h4 class="text-center text-light">ブックマーク一覧</h4>
         </div>
         <div class="row mt-2">
           <%= render 'bookmarks/index', bookmarks: @bookmarks %>
         </div>
       <% else %>
         <div class="row">
-          <h4 class="text-center">投稿一覧</h4>
+          <h4 class="text-center text-light">投稿一覧</h4>
         </div>
         <div class="row mt-2">
           <%= render 'index', posts: @posts %>
