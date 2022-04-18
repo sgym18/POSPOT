@@ -1,4 +1,3 @@
-<!--投稿、タグの検索結果は同じタブで見たい。できない？-->
 <div class="container-fluid">
   <div class="row">
     <div class="col-4 offset-4">
@@ -58,7 +57,11 @@
         aria-labelledby="post-tab"
       >
         <div class="row mt-2">
-          <%= render 'posts/index', posts: @post_result %>
+          <% if @post_result.present? %>
+            <%= render 'posts/index', posts: @post_result %>
+          <% else %>
+            検索結果はありません
+          <% end %>
         </div>
       </div>
       <div

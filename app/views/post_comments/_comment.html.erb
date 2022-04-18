@@ -1,27 +1,11 @@
-<div class="row">
-  <h4 class="text-center text-light">コメント（<%= post.post_comments.count %>件）</h4>
-</div>
-<div class="row my-3">
-  <% if current_user.name != "ゲストユーザー" %>
-    <%= form_with model: [post, post_comment] do |f| %>
-      <%= f.text_area :comment, rows: "3", placeholder: "コメントを入力", class: "form-control" %>
-      <div class="d-grid">
-        <%= f.button :type => "submit", class: "btn btn-primary" do %>
-          <i class="fa-solid fa-paper-plane"></i> 送信
-        <% end %>
-      </div>
-    <% end %>
-  <% end %>
-</div>
-<div class="row overflow-auto">
-  <% post.post_comments.each do |comment| %>
+<% post.post_comments.each do |comment| %>
   <div class="card mb-3 shadow">
     <div class="pt-2">
       <%= image_tag comment.user.get_profile_image(50,50), class: "rounded-circle" %>
     </div>
     <% if comment.user == current_user %>
       <span>
-        <%= link_to post_post_comment_path(comment.post, comment), method: :delete, data: { confirm: "コメントを削除しますか？"}, class: "btn btn-danger btn-sm rounded-pill position-absolute top-0 end-0" do %>
+        <%= link_to post_post_comment_path(comment.post, comment), method: :delete, remote: true, data: { confirm: "コメントを削除しますか？"}, class: "btn btn-danger btn-sm rounded-pill position-absolute top-0 end-0" do %>
           <i class="fa-solid fa-trash-can"></i>
         <% end %>
       </span>
@@ -34,4 +18,3 @@
     </div>
   </div>
 <% end %>
-</div>

@@ -11,14 +11,14 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  def show
+  def edit
     @user = User.find(params[:id])
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to admin_user_path(@user), notice: "ユーザー情報を更新しました。"
+      flash.now[:notice] = "ユーザー情報を更新しました。"
     else
       render :show
     end
