@@ -96,7 +96,7 @@
 
     map = new google.maps.Map(document.getElementById('user_map'), {
       center: { lat: gon.user.latitude, lng: gon.user.longitude },
-      zoom: 9,
+      zoom: 11,
       styles: [
         {
           featureType: 'all',
@@ -123,7 +123,7 @@
       ]
     });
 
-    for (var i = 0; i < markerData.length; i++) {
+    for (let i = 0; i < markerData.length; i++) {
       let id = markerData[i]['id']
 
       markerLatLng = new google.maps.LatLng({
@@ -146,7 +146,7 @@
     }, function (results, status) {
       if(status == 'OK') {
         map.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
+        let marker = new google.maps.Marker({
           map: map,
           position: results[0].geometry.location
         });
@@ -157,7 +157,6 @@
       }
     });
   }
-
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_KEY'] %>&callback=initMap" async defer></script>

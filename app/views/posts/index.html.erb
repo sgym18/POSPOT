@@ -74,7 +74,7 @@
     });
 
     for (let i = 0; i < posts.length; i++) {
-      let id = posts[i]['id']
+      const id = posts[i]['id']
 
       markerLatLng = new google.maps.LatLng({
         lat: posts[i]['latitude'],
@@ -97,7 +97,7 @@
     }, function (results, status) {
       if(status == 'OK') {
         map.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
+        let marker = new google.maps.Marker({
           map: map,
           position: results[0].geometry.location
         });

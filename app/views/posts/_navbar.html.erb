@@ -1,8 +1,6 @@
-<div class="col">
-  <div class="d-flex">
-    <input id="address" type="textbox" value="" placeholder="住所で検索" class="form-control rounded-pill"></input>
-    <button onclick="codeAddress()" class="btn btn-outline-light rounded-pill"><i class="fa-solid fa-magnifying-glass"></i></button>
-  </div>
+<div class="col d-flex">
+  <input id="address" type="textbox" value="" placeholder="住所を入力" class="form-control rounded-pill"></input>
+  <button type="button" onclick="codeAddress()" class="btn btn-light rounded-pill"><i class="fa-solid fa-magnifying-glass"></i></button>
 </div>
 <div class="col text-center">
   <%= link_to "新規投稿", new_post_path, class: "btn btn-outline-light rounded-pill w-100" %>
