@@ -6,19 +6,23 @@
           <%= image_tag bookmark.post.get_image(250,150), class: "card-img" %>
         <% end %>
       </div>
-      <div class="col-5">
-        <div class="card-body">
-          <h5><%= bookmark.post.spot %></h5>
-          <%= render 'bookmarks/bookmark', post: bookmark.post %>
-          <div class="row">
-            <% bookmark.post.tags.each do |tag| %>
-              <div class="col-auto flex-wrap">
-                <span class="text-white bg-dark border border-dark rounded small px-1">
-                  #<%= tag.name %>
-                </span>
-              </div>
-            <% end %>
+      <div class="card-body col-5">
+        <div class="row">
+          <div class="col-9">
+            <h5><%= bookmark.post.spot %></h5>
           </div>
+          <div class="col-3" id="bookmark_<%= bookmark.post.id %>">
+            <%= render 'bookmarks/bookmark', post: bookmark.post %>
+          </div>
+        </div>
+        <div class="row">
+          <% bookmark.post.tags.each do |tag| %>
+            <div class="col-auto flex-wrap">
+              <span class="text-white bg-dark border border-dark rounded small px-1">
+                #<%= tag.name %>
+              </span>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

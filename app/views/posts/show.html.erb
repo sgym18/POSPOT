@@ -105,9 +105,9 @@
     });
 
     (function(){
-      var contentString = "住所：<%= @post.address %>";
+      let contentString = "住所：<%= @post.address %>";
 
-      var marker = new google.maps.Marker({
+      let marker = new google.maps.Marker({
         position:{lat: post.latitude, lng: post.longitude},
         map: map,
         title: contentString

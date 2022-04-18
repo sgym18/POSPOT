@@ -4,8 +4,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     if params[:id]
-      @user = current_user
-      @bookmarks = @user.bookmarks
+      @bookmarks = current_user.bookmarks
     else
       @posts = Post.all
     end

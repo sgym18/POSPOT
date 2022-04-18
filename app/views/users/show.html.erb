@@ -97,10 +97,34 @@
 
     map = new google.maps.Map(document.getElementById('user_map'), {
       center: { lat: gon.user.latitude, lng: gon.user.longitude },
-      zoom: 9,
+      zoom: 11,
+      styles: [
+        {
+          featureType: 'all',
+          elementType: 'labels',
+          stylers: [
+            {visibility: 'off'},
+          ],
+        },
+        {
+          featureType: 'all',
+          elementType: 'all',
+          stylers: [
+            {visibility: 'inherit'},
+          ],
+        },
+        {
+          featureType: 'all',
+          elementType: 'all',
+          stylers: [
+            {hue: '#0F222D'},
+            {saturation : -70},
+          ],
+        }
+      ]
     });
 
-    for (var i = 0; i < markerData.length; i++) {
+    for (let i = 0; i < markerData.length; i++) {
       let id = markerData[i]['id']
 
       markerLatLng = new google.maps.LatLng({
@@ -113,6 +137,26 @@
         map: map
       });
     }
+  }
+
+  function codeAddress() {
+    let inputAddress = document.getElementById('address').value;
+
+    geocoder.geocode({
+      'address': inputAddress
+    }, function (results, status) {
+      if(status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        let marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+        });
+
+        notice.textContent = "検索結果：" + results[0]. geometry.location
+      } else {
+        alert('該当する結果がありませんでした：' + status);
+      }
+    });
   }
 </script>
 
