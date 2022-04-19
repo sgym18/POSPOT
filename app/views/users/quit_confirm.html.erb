@@ -1,4 +1,4 @@
-<div class='container-fluid'>
+<div class='container-fluid text-light'>
   <div class='row'>
     <h4 class="px-3 text-center"><strong>本当に退会しますか？</strong></h4>
   </div>
@@ -14,9 +14,8 @@
   </div>
   <br>
   <div class='row'>
-    <!--ボタンカラー変更する-->
     <h4 class="px-3 text-center">
-      <%= link_to '退会しない', user_path(@user), class: "btn btn-dark" %>
+      <%= link_to '退会しない', user_path(@user), class: "btn btn-light" %>
       <%= link_to '退会する', quit_user_path(@user), method: :patch, class: "btn btn-danger" %>
     </h4>
   </div>

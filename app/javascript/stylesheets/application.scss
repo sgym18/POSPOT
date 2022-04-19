@@ -1,6 +1,6 @@
 $dark: #0F222D;
 $light: #E6E4DC;
-$primary: #738F9F;
+$primary: #1D7874;
 $box-shadow: 0 .5rem 1rem rgba(29, 120, 116);
 $box-shadow-sm: 0 .200rem .20rem rgba(29, 120, 116);
 @import '~bootstrap/scss/bootstrap';
@@ -19,7 +19,11 @@ body {
   background-color: #0F222D;
 }
 
-#index_map {
+a {
+  color: #E6E4DC;
+}
+
+.posts_map {
   height: 600px;
   width: 1000px;
 }
@@ -29,10 +33,24 @@ body {
   width: 100%;
 }
 
-
-#user_map {
+.user_map {
   height: 600px;
   width: 1000px;
+}
+
+.logo {
+  color: #F5AA60;
+  text-shadow: 0 0 1px rgb(245, 150, 57), 
+              0 0 3px rgb(245, 150, 57), 
+              0px 0px rgb(245, 150, 57), 
+              0 0 10px rgba(219, 96, 57, 0.781), 
+              0 0 30px rgba(219, 96, 57, 0.781), 
+              0 0 50px rgba(219, 96, 57, 0.781), 
+              0 0 70px rgba(219, 96, 57, 0.781), 
+              0 0 100px rgba(219, 96, 57, 0.781), 
+              0 0 150px rgba(219, 96, 57, 0.781), 
+              0 0 200px rgba(219, 96, 57, 0.781);
+  pointer-events: none;
 }
 
 .neon-btn {
@@ -67,9 +85,8 @@ body {
 }
 
 
-
 .card {
-  background-color: #EBE7D9;
+  background-color: #E6E4DC;
 }
 
 .link {

@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-4 offset-4">
-      <ul id="tab-menu">
-        <li><a href="#tab1" class="active">投稿</a></li>
-        <li><a href="#tab2" class="">タグ</a></li>
-        <li><a href="#tab3" class="">User</a></li>
+      <ul id="tab-menu" class="list-unstyled list-group list-group-horizontal">
+        <li class="flex-fill"><a href="#tab1" class="active d-grid text-decoration-none btn btn-outline-light">投稿</a></li>
+        <li class="flex-fill"><a href="#tab2" class="d-grid text-decoration-none btn btn-outline-light">タグ</a></li>
+        <li class="flex-fill"><a href="#tab3" class="d-grid text-decoration-none btn btn-outline-light">User</a></li>
       </ul>
 
       <div id="tab-contents">
@@ -28,9 +28,7 @@
           <% if @user_result.present? %>
             <%= render 'users/index', users: @user_result %>
           <% else %>
-            <div class="row mt-2">
-              <p class="text-light">検索結果はありません</p>
-            </div>
+            <p class="text-light">検索結果はありません</p>
           <% end %>
         </div>
       </div>

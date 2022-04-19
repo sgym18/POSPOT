@@ -1,5 +1,5 @@
 <% users.each do |user| %>
-  <div class="row mb-2 mt-2 py-2 bg-light shadow rounded">
+  <div class="row mb-3 py-2 bg-light shadow rounded">
     <%= link_to user_path(user), class: "col-8 d-flex align-items-center text-decoration-none link-dark border border-light" do %>
       <%= image_tag user.get_profile_image(80,80), class: "rounded-circle me-2 shadow-sm" %>
       <strong><%= user.name %></strong>

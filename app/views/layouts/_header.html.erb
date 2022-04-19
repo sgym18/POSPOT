@@ -3,7 +3,7 @@
     <% if user_signed_in? && current_user.name != "ゲストユーザー" %>
       <div class="col-1 offset-8">
         <% if current_user.admin? %>
-          <%= link_to "管理者用", admin_users_path, class: "btn neon-btn rounded-pill" %>
+          <%= link_to "管理者用", admin_users_path, class: "btn btn-outline-light rounded-pill" %>
         <% end %>
       </div>
       <%= render 'searches/form' %>
@@ -20,7 +20,7 @@
       </div>
       <div class="col">
         <h1>
-          <%= link_to "POSPOT", root_path %>
+          <%= link_to "POSPOT", root_path, class: "logo display-3 fw-bolder text-decoration-none" %>
         </h1>
       </div>
       <div class="col">
@@ -38,7 +38,7 @@
       </div>
       <div class="col">
         <h1>
-          <%= link_to "POSPOT", root_path %>
+          <%= link_to "POSPOT", root_path, class: "logo display-3 fw-bolder text-decoration-none" %>
         </h1>
       </div>
       <div class="col">
