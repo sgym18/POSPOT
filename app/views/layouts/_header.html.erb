@@ -19,9 +19,9 @@
         <%= link_to "Map", posts_path, class: "btn nav-btn rounded-pill" %>
       </div>
       <div class="col">
-        <h1>
-          <%= link_to "POSPOT", root_path, class: "fw-bolder text-decoration-none" %>
-        </h1>
+        <%= link_to root_path, class: "fw-bolder text-decoration-none" do %>
+          <%= image_tag 'POSPOT.svg', size: "400x100" %>
+        <% end %>
       </div>
       <div class="col">
         <%= link_to "Profile", user_path(current_user), class: "btn nav-btn rounded-pill" %>
@@ -37,9 +37,9 @@
         <%= link_to "Top", root_path, class: "btn nav-btn rounded-pill" %>
       </div>
       <div class="col">
-        <h1>
-          <%= link_to "POSPOT", root_path, class: "fw-bolder text-decoration-none" %>
-        </h1>
+        <%= link_to root_path, class: "fw-bolder text-decoration-none" do %>
+          <%= image_tag 'POSPOT.svg', size: "400x100" %>
+        <% end %>
       </div>
       <div class="col">
         <%= link_to "Sign up", new_user_registration_path, class: "btn nav-btn rounded-pill" %>
