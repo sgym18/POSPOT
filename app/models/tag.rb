@@ -3,7 +3,6 @@ class Tag < ApplicationRecord
   has_many :posts, through: :post_tags
 
   def self.search_for(keyword)
-    tags = Tag.where("name LIKE(?)", "%#{keyword}%")
-    return tags.inject(init = []) {|result, tag| result + tag.posts}
+    return Post.joins(:tags).where("tags.name LIKE(?)", "%#{keyword}%").distinct()
   end
 end
