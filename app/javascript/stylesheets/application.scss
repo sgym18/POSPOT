@@ -38,50 +38,20 @@ a {
   width: 1000px;
 }
 
-.logo {
-  color: #F5AA60;
-  text-shadow: 0 0 1px rgb(245, 150, 57), 
-              0 0 3px rgb(245, 150, 57), 
-              0px 0px rgb(245, 150, 57), 
-              0 0 10px rgba(219, 96, 57, 0.781), 
-              0 0 30px rgba(219, 96, 57, 0.781), 
-              0 0 50px rgba(219, 96, 57, 0.781), 
-              0 0 70px rgba(219, 96, 57, 0.781), 
-              0 0 100px rgba(219, 96, 57, 0.781), 
-              0 0 150px rgba(219, 96, 57, 0.781), 
-              0 0 200px rgba(219, 96, 57, 0.781);
-  pointer-events: none;
+.nav-btn {
+  padding: 0.6em 1em;
+  border: 4px solid #fa725a;
+  transition: ease-in-out 0.3s;
+  background-color: transparent;
+  color: #fa725a;
+  font-weight: bolder;
+  font-size: 16px;
 }
 
-.neon-btn {
-  --glow-color: rgb(245, 150, 57);
-  --glow-spread-color: rgba(219, 96, 57, 0.781);
-  --enhanced-glow-color: rgb(259, 180, 57);
-  --btn-color: rgb(128, 61, 57);
-  border: .25em solid var(--glow-color);
-  color: var(--glow-color);
-  background-color: var(--btn-color);
-  border-radius: 1em;
-  outline: none;
-  box-shadow: 0 0 1em .25em var(--glow-color),
-          0 0 4em 1em var(--glow-spread-color),
-          inset 0 0 .75em .25em var(--glow-color);
-  text-shadow: 0 0 .5em var(--glow-color);
-  transition: all 0.3s;
-}
-
-.neon-btn:hover {
-  color: var(--btn-color);
-  background-color: var(--glow-color);
-  box-shadow: 0 0 1em .25em var(--glow-color),
-          0 0 4em 2em var(--glow-spread-color),
-          inset 0 0 .75em .25em var(--glow-color);
-}
-
-.neon-btn:active {
-  box-shadow: 0 0 0.6em .25em var(--glow-color),
-          0 0 2.5em 2em var(--glow-spread-color),
-          inset 0 0 .5em .25em var(--glow-color);
+.nav-btn:hover {
+ transform: scale(1.2) rotate(10deg);
+ background-color: #fa725a;
+ color: white;
 }
 
 
