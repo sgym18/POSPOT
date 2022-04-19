@@ -20,7 +20,7 @@
             <div class="col-10">
               <h3><%= @post.spot %></h3>
               <% @post.tags.each do |tag| %>
-                <span class="text-light bg-dark border border-dark rounded small px-1">
+                <span class="text-light bg-primary border border-primary rounded small mx-1">
                   #<%= tag.name %>
                 </span>
               <% end %>
@@ -46,10 +46,10 @@
 
       <div class="row">
         <div class="col-6">
-          <div id='show_map' class="mx-auto border border-dark border-5 rounded"></div>
+          <div id='show_map' class="mx-auto border border-primary border-5 rounded"></div>
         </div>
         <div class="col-6">
-          <%= image_tag @post.get_image(500,500), class: "rounded" %>
+          <%= image_tag @post.get_image(500,500), class: "rounded img-fluid" %>
         </div>
       </div>
     </div>
@@ -104,15 +104,11 @@
       ]
     });
 
-    (function(){
-      let contentString = "住所：<%= @post.address %>";
-
-      let marker = new google.maps.Marker({
-        position:{lat: post.latitude, lng: post.longitude},
-        map: map,
-        title: contentString
-      });
-    })();
+    let marker = new google.maps.Marker({
+      position:{lat: post.latitude, lng: post.longitude},
+      map: map,
+      animation: google.maps.Animation.DROP
+    });
   }
 </script>
 

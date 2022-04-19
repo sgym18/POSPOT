@@ -33,13 +33,12 @@
                 <h4 class="text-center text-light">このユーザーは退会済みです。</h4>
               <% end %>
             </div>
-
           </div>
         </div>
       </div>
 
       <div class="row mt-2 justify-content-center">
-        <div id="user_map"></div>
+        <div id="map" class="user_map border border-primary border-5 rounded"></div>
       </div>
     </div>
 
@@ -49,114 +48,11 @@
       </div>
       <div class="row mt-2">
         <div class="col-12">
-          <% @user.posts.each do |post| %>
-            <div class="card shadow mb-3">
-              <div class="row">
-                <div class="col-7">
-                  <%= link_to post_path(post) do %>
-                    <%= image_tag post.get_image(250,150), class: "card-img" %>
-                  <% end %>
-                </div>
-                <div class="card-body col-5">
-                  <div class="row">
-                    <div class="col-9">
-                      <h5><%= post.spot %></h5>
-                    </div>
-                    <div class="col-3" id="bookmark_<%= post.id %>">
-                      <%= render 'bookmarks/bookmark', post: post %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <% post.tags.each do |tag| %>
-                      <div class="col-auto flex-wrap">
-                        <span class="text-white bg-dark border border-dark rounded small px-1">
-                          #<%= tag.name %>
-                        </span>
-                      </div>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-            </div>
-          <% end %>
+          <%= render 'posts/index', posts: @posts %>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<script>
-  let map;
-  let marker = [];
-  let markerData = gon.posts;
-  let user = gon.user
-
-  function initMap() {
-    geocoder = new google.maps.Geocoder()
-
-    map = new google.maps.Map(document.getElementById('user_map'), {
-      center: { lat: gon.user.latitude, lng: gon.user.longitude },
-      zoom: 11,
-      styles: [
-        {
-          featureType: 'all',
-          elementType: 'labels',
-          stylers: [
-            {visibility: 'off'},
-          ],
-        },
-        {
-          featureType: 'all',
-          elementType: 'all',
-          stylers: [
-            {visibility: 'inherit'},
-          ],
-        },
-        {
-          featureType: 'all',
-          elementType: 'all',
-          stylers: [
-            {hue: '#0F222D'},
-            {saturation : -70},
-          ],
-        }
-      ]
-    });
-
-    for (let i = 0; i < markerData.length; i++) {
-      let id = markerData[i]['id']
-
-      markerLatLng = new google.maps.LatLng({
-        lat: markerData[i]['latitude'],
-        lng: markerData[i]['longitude']
-      });
-
-      marker[i] = new google.maps.Marker({
-        position: markerLatLng,
-        map: map
-      });
-    }
-  }
-
-  function codeAddress() {
-    let inputAddress = document.getElementById('address').value;
-
-    geocoder.geocode({
-      'address': inputAddress
-    }, function (results, status) {
-      if(status == 'OK') {
-        map.setCenter(results[0].geometry.location);
-        let marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-        });
-
-        notice.textContent = "検索結果：" + results[0]. geometry.location
-      } else {
-        alert('該当する結果がありませんでした：' + status);
-      }
-    });
-  }
-</script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_KEY'] %>&callback=initMap" async defer></script>
+<%= render 'posts/map' %>

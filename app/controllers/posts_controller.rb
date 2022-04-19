@@ -2,11 +2,10 @@ class PostsController < ApplicationController
   before_action :ensure_guest_user, only: [:new, :edit]
 
   def index
-    @posts = Post.all
     if params[:id]
-      @bookmarks = current_user.bookmarks
+      @bookmarks = current_user.bookmarks.order(created_at: :desc)
     else
-      @posts = Post.all
+      @posts = Post.all.order(created_at: :desc)
     end
     gon.posts = @posts
     gon.user = current_user
@@ -54,14 +53,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to posts_path, notice: "投稿を削除しました"
-  end
-
-  def map
-    results = Geocoder.search(params[:address])
-    @latlng = results.first.coordinates
-    respond_to do |format|
-      format.js
-    end
   end
 
   private

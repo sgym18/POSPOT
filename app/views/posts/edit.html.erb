@@ -30,12 +30,11 @@
         <%= f.submit "変更を保存", class: "btn btn-lg btn-dark" %>
       </div>
     <% end %>
-    <!--後でカラー変更-->
     <div class="d-grid mt-3">
       <%= link_to "投稿を削除する", post_path(@post), method: :delete, data: { confirm: "投稿を削除しますか？"}, class: "btn btn-lg btn-danger" %>
     </div>
     <div class="d-grid mt-3">
-      <%= link_to "保存せず終了", post_path(@post), class: "btn btn-lg btn-dark" %>
+      <%= link_to "保存せず終了", post_path(@post), class: "btn btn-lg btn-outline-dark" %>
     </div>
   </div>
 </div>

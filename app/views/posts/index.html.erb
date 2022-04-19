@@ -5,7 +5,7 @@
         <%= render 'posts/navbar' %>
       </div>
       <div class="row mt-2 justify-content-center">
-        <div id="index_map"></div>
+        <div id="map" class="posts_map"></div>
       </div>
     </div>
     <div class="col-4">
@@ -32,91 +32,4 @@
   </div>
 </div>
 
-<script>
-  let map
-  let geocoder
-  let marker = [];
-  let posts = gon.posts;
-  let user = gon.user
-  const notice = document.getElementById('notice')
-
-  function initMap() {
-    geocoder = new google.maps.Geocoder()
-
-    map = new google.maps.Map(document.getElementById('index_map'), {
-      center: { lat: user.latitude, lng: user.longitude },
-      zoom: 15,
-      mapTypeControl: false,
-      styles: [
-        {
-          featureType: 'all',
-          elementType: 'labels',
-          stylers: [
-            {visibility: 'off'},
-          ],
-        },
-        {
-          featureType: 'all',
-          elementType: 'all',
-          stylers: [
-            {visibility: 'inherit'},
-          ],
-        },
-        {
-          featureType: 'all',
-          elementType: 'all',
-          stylers: [
-            {hue: '#0F222D'},
-            {saturation : -70},
-          ],
-        }
-      ]
-    });
-
-    for (let i = 0; i < posts.length; i++) {
-      const id = posts[i]['id']
-
-      markerLatLng = new google.maps.LatLng({
-        lat: posts[i]['latitude'],
-        lng: posts[i]['longitude']
-      });
-
-      marker[i] = new google.maps.Marker({
-        position: markerLatLng,
-        map: map
-      });
-    }
-  }
-
-
-  function codeAddress() {
-    let inputAddress = document.getElementById('address').value;
-
-    geocoder.geocode({
-      'address': inputAddress
-    }, function (results, status) {
-      if(status == 'OK') {
-        map.setCenter(results[0].geometry.location);
-        let marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-        });
-
-        notice.textContent = "検索結果：" + results[0]. geometry.location
-      } else {
-        alert('該当する結果がありませんでした：' + status);
-      }
-    });
-  }
-
-  // let mapInstance
-
-  // function initMap(){
-  //   mapInstance = new google.maps.Map(document.getElementById('index_map'), {
-  //   center: {lat: gon.user.latitude, lng: gon.user.longitude},
-  //   zoom: 8
-  //   });
-  // }
-</script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_KEY'] %>&callback=initMap" async defer></script>
+<%= render 'map' %>
