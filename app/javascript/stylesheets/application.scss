@@ -6,10 +6,6 @@ $box-shadow-sm: 0 .200rem .20rem rgba(29, 120, 116);
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
-html, body {
-  height: 100vh;
-}
-
 body {
   background-image: linear-gradient(0deg, transparent calc(100% - 1px), #142E3D calc(100% - 1px)),
                     linear-gradient(90deg, transparent calc(100% - 1px), #142E3D calc(100% - 1px));
@@ -17,15 +13,41 @@ body {
   background-repeat: repeat;
   background-position: center center;
   background-color: #0F222D;
+
 }
 
 a {
   color: #E6E4DC;
 }
 
+.post-scroll, .comment-scroll {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 600px;
+}
+
+.user-posts-scroll {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 800px;
+}
+
+.post-scroll::-webkit-scrollbar, .user-posts-scroll::-webkit-scrollbar, .comment-scroll::-webkit-scrollbar {
+  height: 600px;
+}
+
+.post-scroll::-webkit-scrollbar-thumb, .user-posts-scroll::-webkit-scrollbar-thumb, .comment-scroll::-webkit-scrollbar-thumb {
+  background-color: #F3B643;
+  border-radius: 20px;
+}
+
+.post-scroll::-webkit-scrollbar-track, .user-posts-scroll::-webkit-scrollbar-track, .comment-scroll::-webkit-scrollbar-track {
+  background-color: rgba(15, 34, 45, 0.2);
+}
+
 .posts_map {
   height: 600px;
-  width: 1000px;
+  width: 100%;
 }
 
 #show_map {
@@ -35,7 +57,7 @@ a {
 
 .user_map {
   height: 600px;
-  width: 1000px;
+  width: 100%;
 }
 
 .nav-btn {
@@ -61,32 +83,15 @@ a {
 
 .link {
 	padding: 0.1em 0.3em;
-	background-image: linear-gradient(to right, rgba(0,0,0,0) 50%, rgba(245,150,57,1) 50%);
+	background-image: linear-gradient(to right, rgba(0,0,0,0) 50%, rgba(250,114,90) 50%);
 	background-position: 0 0;
 	background-size: 200% auto;
 	transition: .3s;
-	color: #ff9800;
+	color: #fa725a;
 }
 
 .link:hover {
 	background-position: -100% 0;
 	color: #fff;
-}
-
-.field_with_errors {
-input {
-@extend .is-invalid;
-}
-}
-.form-group {
-.field_with_errors {
-label {
-font-size: 20px;
-font-weight: 500;
-}
-input {
-height: 50px;
-}
-}
 }
 
