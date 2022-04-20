@@ -61,32 +61,15 @@ a {
 
 .link {
 	padding: 0.1em 0.3em;
-	background-image: linear-gradient(to right, rgba(0,0,0,0) 50%, rgba(245,150,57,1) 50%);
+	background-image: linear-gradient(to right, rgba(0,0,0,0) 50%, rgba(250,114,90) 50%);
 	background-position: 0 0;
 	background-size: 200% auto;
 	transition: .3s;
-	color: #ff9800;
+	color: #fa725a;
 }
 
 .link:hover {
 	background-position: -100% 0;
 	color: #fff;
-}
-
-.field_with_errors {
-input {
-@extend .is-invalid;
-}
-}
-.form-group {
-.field_with_errors {
-label {
-font-size: 20px;
-font-weight: 500;
-}
-input {
-height: 50px;
-}
-}
 }
 
