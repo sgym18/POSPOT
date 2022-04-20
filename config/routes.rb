@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'homes#top'
-  devise_for :users, :controllers => {
+  devise_for :users, skip: [:passwords], :controllers => {
     :sessions => "users/sessions"
   }
 
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     end
     resource :relationships, only: [:create, :destroy]
   end
-  
+
   namespace :admin do
     resources :users, only: [:index, :edit, :update]
   end
