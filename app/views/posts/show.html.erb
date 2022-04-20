@@ -20,7 +20,7 @@
             <div class="col-10">
               <h3><%= @post.spot %></h3>
               <% @post.tags.each do |tag| %>
-                <span class="text-light bg-primary border border-primary rounded small mx-1">
+                <span class="text-light bg-primary border border-primary rounded small mx-1 px-1">
                   <%= link_to search_path(keyword: tag.name), class: "text-decoration-none link-light" do %>
                     #<%= tag.name %>
                   <% end %>
