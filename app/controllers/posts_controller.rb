@@ -4,11 +4,13 @@ class PostsController < ApplicationController
 
   def index
     if params[:id]
-      @bookmarks = current_user.bookmarks.order(created_at: :desc)
+      bookmarks = Bookmark.where(user_id: current_user.id).pluck(:post_id)
+      @bookmark_posts = Post.find(bookmarks).reverse
+      gon.posts = @bookmark_posts
     else
       @posts = Post.all.order(created_at: :desc)
+      gon.posts = @posts
     end
-    gon.posts = @posts
     gon.user = current_user
   end
 
