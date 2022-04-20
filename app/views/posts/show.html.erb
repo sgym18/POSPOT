@@ -21,7 +21,9 @@
               <h3><%= @post.spot %></h3>
               <% @post.tags.each do |tag| %>
                 <span class="text-light bg-primary border border-primary rounded small mx-1">
-                  #<%= tag.name %>
+                  <%= link_to search_path(keyword: tag.name), class: "text-decoration-none link-light" do %>
+                    #<%= tag.name %>
+                  <% end %>
                 </span>
               <% end %>
               <p class="text-break"><%= @post.caption %></p>
@@ -29,11 +31,11 @@
             <div class="col-2 d-flex">
               <div>
                 <% if @post.user == current_user && current_user.name != "ゲストユーザー" %>
-                  <span class="h3">
+                  <h1 class="h3">
                     <%= link_to edit_post_path(@post), class: "text-decoration-none text-primary" do %>
-                      <i class="fa-solid fa-pen-to-square"></i>
+                      <i class="far fa-edit"></i>
                     <% end %>
-                  </span>
+                  </h1>
                 <% end %>
               </div>
               <div class="ms-1" id="bookmark_<%= @post.id %>">

@@ -4,9 +4,13 @@
     <button type="button" onclick="codeAddress()" class="btn btn-light rounded-pill"><i class="fas fa-search"></i></button>
   </div>
   <div class="col text-center">
-    <%= link_to "新規投稿", new_post_path, class: "btn btn-outline-light rounded-pill w-100" %>
+    <%= link_to new_post_path, class: "btn btn-outline-light rounded-pill w-100" do %>
+      <i class="fas fa-plus-circle"></i> 新規投稿
+    <% end %>
   </div>
   <div class="col text-center">
-    <%= link_to "ブックマーク", posts_path(id: current_user.id), class: "btn  btn-outline-light rounded-pill w-100" %>
+    <%= link_to posts_path(id: current_user.id), class: "btn  btn-outline-light rounded-pill w-100" do %>
+      <i class="fas fa-bookmark"></i> ブックマーク
+    <% end %>
   </div>
 <% end %>

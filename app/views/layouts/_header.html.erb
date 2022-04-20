@@ -13,10 +13,14 @@
   <div class="row d-flex align-items-center justify-content-center text-center py-4">
     <% if user_signed_in? %>
       <div class="col">
-        <%= link_to "Users", users_path, class: "btn nav-btn rounded-pill" %>
+        <%= link_to users_path, class: "btn nav-btn rounded-pill" do %>
+          <i class="fas fa-users"></i> Users
+        <% end %>
       </div>
       <div class="col">
-        <%= link_to "Map", posts_path, class: "btn nav-btn rounded-pill" %>
+        <%= link_to posts_path, class: "btn nav-btn rounded-pill" do %>
+          <i class="far fa-map"></i> Map
+        <% end %>
       </div>
       <div class="col">
         <%= link_to root_path, class: "fw-bolder text-decoration-none" do %>
@@ -24,17 +28,25 @@
         <% end %>
       </div>
       <div class="col">
-        <%= link_to "Profile", user_path(current_user), class: "btn nav-btn rounded-pill" %>
+        <%= link_to user_path(current_user), class: "btn nav-btn rounded-pill" do %>
+          <i class="far fa-address-card"></i> Profile
+        <% end %>
       </div>
       <div class="col">
-        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn nav-btn rounded-pill" %>
+        <%= link_to destroy_user_session_path, method: :delete, class: "btn nav-btn rounded-pill" do %>
+          <i class="fas fa-sign-out-alt"></i> Log out
+        <% end %>
       </div>
     <% else %>
       <div class="col">
-        <%= link_to "About", about_path, class: "btn nav-btn rounded-pill" %>
+        <%= link_to about_path, class: "btn nav-btn rounded-pill" do %>
+          <i class="fas fa-link"></i> About
+        <% end %>
       </div>
       <div class="col">
-        <%= link_to "Top", root_path, class: "btn nav-btn rounded-pill" %>
+        <%= link_to root_path, class: "btn nav-btn rounded-pill" do %>
+          <i class="fas fa-map-marker-alt"></i> Top
+        <% end %>
       </div>
       <div class="col">
         <%= link_to root_path, class: "fw-bolder text-decoration-none" do %>
@@ -42,10 +54,14 @@
         <% end %>
       </div>
       <div class="col">
-        <%= link_to "Sign up", new_user_registration_path, class: "btn nav-btn rounded-pill" %>
+        <%= link_to new_user_registration_path, class: "btn nav-btn rounded-pill" do %>
+          <i class="fas fa-user-plus"></i> Sign up
+        <% end %>
       </div>
       <div class="col">
-        <%= link_to "Log in", new_user_session_path, class: "btn nav-btn rounded-pill" %>
+        <%= link_to new_user_session_path, class: "btn nav-btn rounded-pill" do %>
+          <i class="fas fa-sign-in-alt"></i> Log in
+        <% end %>
       </div>
     <% end %>
   </div>

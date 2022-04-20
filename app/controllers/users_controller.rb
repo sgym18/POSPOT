@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
+  before_action :ensure_correct_user, only: [:edit, :update, :quit_confirm, :quit]
   before_action :ensure_guest_user, only: [:edit, :update, :quit_confirm, :quit]
 
   def index
-    @users = User.page(params[:page]).per(5)
+    @users = User.page(params[:page]).per(6)
   end
 
   def show
@@ -39,6 +40,13 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to user_path(current_user)
+    end
+  end
 
   def ensure_guest_user
     @user = User.find(params[:id])
