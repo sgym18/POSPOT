@@ -20,7 +20,7 @@ class Admin::UsersController < ApplicationController
     if @user.update(user_params)
       flash.now[:notice] = "ユーザー情報を更新しました。"
     else
-      render :show
+      render :error
     end
   end
 

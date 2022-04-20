@@ -11,6 +11,7 @@
         <div id="tab1" class="tab">
           <% if @post_result.present? %>
             <%= render 'posts/index', posts: @post_result %>
+            <%= paginate @post_result, param_name: "post_page" %>
           <% else %>
             <p class="text-light">検索結果はありません</p>
           <% end %>
@@ -19,6 +20,7 @@
         <div id="tab2" class="tab">
           <% if @tag_result.present? %>
             <%= render 'posts/index', posts: @tag_result %>
+            <%= paginate @tag_result, param_name: "tag_page" %>
           <% else %>
             <p class="text-light">検索結果はありません</p>
           <% end %>
@@ -27,6 +29,7 @@
         <div id="tab3" class="tab">
           <% if @user_result.present? %>
             <%= render 'users/index', users: @user_result %>
+            <%= paginate @user_result, param_name: "user_page" %>
           <% else %>
             <p class="text-light">検索結果はありません</p>
           <% end %>

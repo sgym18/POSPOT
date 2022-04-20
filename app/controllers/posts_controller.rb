@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :ensure_correct_user, only: [:edit]
   before_action :ensure_guest_user, only: [:new, :edit]
 
   def index
@@ -58,6 +59,14 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def ensure_correct_user
+    @post = Post.find(params[:id])
+    @user = @post.user
+    unless @user == current_user
+      redirect_to user_path(current_user)
+    end
+  end
 
   def ensure_guest_user
     @user = current_user

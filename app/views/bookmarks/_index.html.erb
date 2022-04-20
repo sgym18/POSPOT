@@ -16,13 +16,15 @@
           </div>
         </div>
         <div class="row">
-          <% post.tags.each do |tag| %>
-            <div class="col-auto flex-wrap">
-              <span class="text-white bg-primary border border-primary rounded small px-1">
-                #<%= tag.name %>
-              </span>
-            </div>
-          <% end %>
+          <div class="col-auto d-flex flex-wrap">
+            <% post.tags.each do |tag| %>
+              <li class="list-unstyled text-white bg-primary border border-primary rounded small me-1 mb-1">
+                <%= link_to search_path(keyword: tag.name), class: "text-decoration-none link-light" do %>
+                  #<%= tag.name %>
+                <% end %>
+              </li>
+            <% end %>
+          </div>  
         </div>
       </div>
     </div>

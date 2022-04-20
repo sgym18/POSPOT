@@ -1,0 +1,2 @@
+$('#name_error').html('<% if @user.errors.include?(:name) %><span class="text-danger"><i class="fas fa-exclamation-circle"></i><%= @user.errors.full_messages_for(:name).first %></span><% end %>');
+$('#address_error').html('<% if @user.errors.include?(:address) %><span class="text-danger"><i class="fas fa-exclamation-circle"></i><%= @user.errors.full_messages_for(:address).first %></span><% end %>');
