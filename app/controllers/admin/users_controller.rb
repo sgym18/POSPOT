@@ -3,11 +3,11 @@ class Admin::UsersController < ApplicationController
 
   def index
     if params[:status] == "有効"
-      @users = Kaminari.paginate_array(User.where(is_deleted: false)).page(params[:page]).per(10)
+      @users = Kaminari.paginate_array(User.where(is_deleted: false)).page(params[:page]).per(8)
     elsif params[:status] == "退会"
-      @users = Kaminari.paginate_array(User.where(is_deleted: true)).page(params[:page]).per(10)
+      @users = Kaminari.paginate_array(User.where(is_deleted: true)).page(params[:page]).per(8)
     else
-      @users = User.page(params[:page]).per(5)
+      @users = User.page(params[:page]).per(8)
     end
   end
 

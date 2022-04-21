@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   end
 
   get 'about' => 'homes#about'
-  get 'map_request' => 'posts#map', as: 'map_request'
   get 'search' => 'searches#search'
+  get 'searchpost' => 'searches#search_post'
+  get 'searchtag' => 'searches#search_tag'
+  get 'searchuser' => 'searches#search_user'
+
 end
