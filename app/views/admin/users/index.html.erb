@@ -1,10 +1,10 @@
-<div class="container-fluid col-8 mt-5">
+<div class="container-fluid col-8">
   <div class="row justify-content-center card">
     <div class="card-body">
       <h3 class="card-title mb-5">Users</h3>
       <%= link_to "全ユーザー", admin_users_path, class: "btn btn-dark rounded-pill" %>
       <%= link_to "有効中ユーザー", admin_users_path(status: "有効"), class: "btn btn-success rounded-pill" %>
-      <%= link_to "退会済ユーザー  ", admin_users_path(status: "退会"), class: "btn btn-danger rounded-pill" %>
+      <%= link_to "退会済ユーザー", admin_users_path(status: "退会"), class: "btn btn-danger rounded-pill" %>
 
       <table class="table table-borderless table-hover">
         <thead>

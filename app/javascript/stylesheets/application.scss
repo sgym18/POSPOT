@@ -27,28 +27,35 @@ a {
   overflow-y: scroll;
   overflow-x: hidden;
   height: 600px;
+  &::-webkit-scrollbar {
+    height: 600px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #F3B643;
+    border-radius: 20px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: rgba(15, 34, 45, 0.2);
+  }
 }
 
 .user-posts-scroll {
   overflow-y: scroll;
   overflow-x: hidden;
   height: 800px;
+  &::-webkit-scrollbar {
+    height: 600px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #F3B643;
+    border-radius: 20px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: rgba(15, 34, 45, 0.2);
+  }
 }
 
-.post-scroll::-webkit-scrollbar, .bookmark-scroll::-webkit-scrollbar, .user-posts-scroll::-webkit-scrollbar, .comment-scroll::-webkit-scrollbar {
-  height: 600px;
-}
-
-.post-scroll::-webkit-scrollbar-thumb, .bookmark-scroll::-webkit-scrollbar-thumb, .user-posts-scroll::-webkit-scrollbar-thumb, .comment-scroll::-webkit-scrollbar-thumb {
-  background-color: #F3B643;
-  border-radius: 20px;
-}
-
-.post-scroll::-webkit-scrollbar-track, .bookmark-scroll::-webkit-scrollbar-track, .user-posts-scroll::-webkit-scrollbar-track, .comment-scroll::-webkit-scrollbar-track {
-  background-color: rgba(15, 34, 45, 0.2);
-}
-
-.posts_map {
+.posts_map, .user_map {
   height: 600px;
   width: 100%;
 }
@@ -58,14 +65,11 @@ a {
   width: 100%;
 }
 
-.user_map {
-  height: 600px;
-  width: 100%;
-}
-
-.logo:hover {
-  transform: scale(1.2) rotate(10deg);
+.logo {
   transition: ease-in-out 0.3s;
+  &:hover {
+    transform: scale(1.2) rotate(10deg);
+  }
 }
 
 .nav-btn {
@@ -76,14 +80,12 @@ a {
   color: #fa725a;
   font-weight: bolder;
   font-size: 16px;
+  &:hover {
+    transform: scale(1.2) rotate(10deg);
+    background-color: #fa725a;
+    color: white;
+  }
 }
-
-.nav-btn:hover {
-  transform: scale(1.2) rotate(10deg);
-  background-color: #fa725a;
-  color: white;
-}
-
 
 .card {
   background-color: #E6E4DC;
@@ -96,10 +98,8 @@ a {
 	background-size: 200% auto;
 	transition: .3s;
 	color: #fa725a;
+	&:hover {
+	  background-position: -100% 0;
+	  color: #fff;
+	}
 }
-
-.link:hover {
-	background-position: -100% 0;
-	color: #fff;
-}
-

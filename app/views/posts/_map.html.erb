@@ -6,6 +6,7 @@
   let posts = gon.posts;
   let user = gon.user;
 
+  // マップの表示
   function initMap() {
     geocoder = new google.maps.Geocoder()
 
@@ -39,6 +40,7 @@
       ]
     });
 
+    // 複数ピン立て
     for (let i = 0; i < posts.length; i++) {
       const id = posts[i]['id']
 
@@ -67,6 +69,7 @@
     });
   }
 
+  // 検索用
   function codeAddress() {
     let inputAddress = document.getElementById('address').value;
 
@@ -75,10 +78,6 @@
     }, function (results, status) {
       if(status == 'OK') {
         map.setCenter(results[0].geometry.location);
-        marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-        });
 
         notice.textContent = "検索結果：" + results[0]. geometry.location
       } else {
