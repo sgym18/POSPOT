@@ -2,16 +2,31 @@
   <div class="row">
     <div class="col-4 offset-4">
       <ul id="tab-menu" class="list-unstyled list-group list-group-horizontal">
-        <li class="flex-fill"><%= link_to "投稿", searchpost_path, class: "active d-grid text-decoration-none btn btn-outline-light" %></li>
-        <li class="flex-fill"><%= link_to "タグ", searchtag_path, class: "d-grid text-decoration-none btn btn-outline-light" %></li>
-        <li class="flex-fill"><%= link_to "User", searchuser_path, class: "d-grid text-decoration-none btn btn-outline-light" %></li>
+        <li class="flex-fill"><a href="#tab1" class="active d-grid text-decoration-none btn btn-outline-light">投稿</a></li>
+        <li class="flex-fill"><a href="#tab2" class="d-grid text-decoration-none btn btn-outline-light">タグ</a></li>
+        <li class="flex-fill"><a href="#tab3" class="d-grid text-decoration-none btn btn-outline-light">User</a></li>
       </ul>
 
       <div id="tab-contents">
-        <div class="tab">
+        <div id="tab1" class="tab">
           <% if @post_result.present? %>
             <%= render 'posts/index', posts: @post_result %>
-            <%= paginate @post_result, param_name: "post_page" %>
+          <% else %>
+            <p class="text-light">検索結果はありません</p>
+          <% end %>
+        </div>
+
+        <div id="tab2" class="tab">
+          <% if @tag_result.present? %>
+            <%= render 'posts/index', posts: @tag_result %>
+          <% else %>
+            <p class="text-light">検索結果はありません</p>
+          <% end %>
+        </div>
+
+        <div id="tab3" class="tab">
+          <% if @user_result.present? %>
+            <%= render 'users/index', users: @user_result %>
           <% else %>
             <p class="text-light">検索結果はありません</p>
           <% end %>
@@ -20,3 +35,15 @@
     </div>
   </div>
 </div>
+
+<script>
+  $('#tab-contents .tab[id != "tab1"]').hide();
+
+  $('#tab-menu a').on('click', function(event) {
+    $("#tab-contents .tab").hide();
+    $("#tab-menu .active").removeClass("active");
+    $(this).addClass("active");
+    $($(this).attr("href")).show();
+    event.preventDefault();
+  });
+</script>

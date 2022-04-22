@@ -27,8 +27,4 @@ Rails.application.routes.draw do
 
   get 'about' => 'homes#about'
   get 'search' => 'searches#search'
-  get 'searchpost' => 'searches#search_post'
-  get 'searchtag' => 'searches#search_tag'
-  get 'searchuser' => 'searches#search_user'
-
 end
