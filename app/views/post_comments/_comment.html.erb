@@ -1,20 +1,22 @@
-<% post.post_comments.each do |comment| %>
-  <div class="card mb-3 shadow">
-    <div class="pt-2">
-      <%= image_tag comment.user.get_profile_image(50,50), class: "rounded-circle" %>
+<div class="col-12">
+  <% post.post_comments.each do |comment| %>
+    <div class="card mb-3 shadow">
+      <div class="pt-2">
+        <%= image_tag comment.user.get_profile_image(50,50), class: "ms-2 rounded-circle" %>
+      </div>
+      <% if comment.user == current_user %>
+        <span>
+          <%= link_to post_post_comment_path(comment.post, comment), method: :delete, remote: true, data: { confirm: "コメントを削除しますか？"}, class: "btn btn-danger btn-sm rounded-pill position-absolute top-0 end-0" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        </span>
+      <% end %>
+      <div class="card-body pt-2">
+        <p class="card-text text-break">
+          <strong class="h5"><%= comment.user.name %></strong>
+          <%= comment.comment %>
+        </p>
+      </div>
     </div>
-    <% if comment.user == current_user %>
-      <span>
-        <%= link_to post_post_comment_path(comment.post, comment), method: :delete, remote: true, data: { confirm: "コメントを削除しますか？"}, class: "btn btn-danger btn-sm rounded-pill position-absolute top-0 end-0" do %>
-          <i class="fas fa-trash-alt"></i>
-        <% end %>
-      </span>
-    <% end %>
-    <div class="card-body pt-2">
-      <p class="card-text text-break">
-        <strong class="h5"><%= comment.user.name %></strong>
-        <%= comment.comment %>
-      </p>
-    </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

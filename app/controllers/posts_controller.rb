@@ -38,12 +38,12 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @tag_list = @post.tags.pluck(:name).join(",")
+    @tag_list = @post.tags.pluck(:name).split(/ |　/)
   end
 
   def update
     @post = Post.find(params[:id])
-    tag_list = params[:post][:tag_name].split(",")
+    tag_list = params[:post][:tag_name].split(/ |　/)
     if @post.update(post_params)
       @post.save_tags(tag_list)
       redirect_to post_path(@post), notice: "変更を保存しました"

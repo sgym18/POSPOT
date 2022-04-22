@@ -3,8 +3,8 @@
   let geocoder;
   let marker = [];
   let infoWindow = [];
-  let posts = gon.posts;
-  let user = gon.user;
+  const posts = gon.posts;
+  const user = gon.user;
 
   // マップの表示
   function initMap() {
@@ -71,7 +71,7 @@
 
   // 検索用
   function codeAddress() {
-    let inputAddress = document.getElementById('address').value;
+    const inputAddress = document.getElementById('address').value;
 
     geocoder.geocode({
       'address': inputAddress

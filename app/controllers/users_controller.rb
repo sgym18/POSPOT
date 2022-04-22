@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.name == "ゲストユーザー"
-      redirect_to users_path, notice: "ゲストユーザーができるのは閲覧のみです。"
+      redirect_to user_path(current_user), notice: "ゲストユーザーができるのは閲覧のみです。"
     end
   end
 
