@@ -8,7 +8,7 @@
       </ul>
 
       <div id="tab-contents">
-        <div id="tab1" class="tab">
+        <div id="tab1" class="tab search_scroll">
           <% if @post_result.present? %>
             <%= render 'posts/index', posts: @post_result %>
           <% else %>
@@ -16,7 +16,7 @@
           <% end %>
         </div>
 
-        <div id="tab2" class="tab">
+        <div id="tab2" class="tab search_scroll">
           <% if @tag_result.present? %>
             <%= render 'posts/index', posts: @tag_result %>
           <% else %>
@@ -24,7 +24,7 @@
           <% end %>
         </div>
 
-        <div id="tab3" class="tab">
+        <div id="tab3" class="tab search_scroll">
           <% if @user_result.present? %>
             <%= render 'users/index', users: @user_result %>
           <% else %>

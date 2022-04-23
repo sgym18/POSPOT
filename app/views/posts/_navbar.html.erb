@@ -1,7 +1,7 @@
 <% if current_user.name != "ゲストユーザー" %>
   <div class="col d-flex">
     <input id="address" type="textbox" value="" placeholder="住所を入力" class="form-control rounded-pill"></input>
-    <button type="button" onclick="codeAddress()" class="btn btn-light rounded-pill"><i class="fas fa-search"></i></button>
+    <button type="button" onclick="codeAddress()" class="btn btn-light rounded-circle"><i class="fas fa-search"></i></button>
   </div>
   <div class="col text-center">
     <%= link_to new_post_path, class: "btn btn-outline-light rounded-pill w-100" do %>
