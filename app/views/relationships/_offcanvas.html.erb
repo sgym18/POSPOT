@@ -1,0 +1,39 @@
+<div class="col-3">
+  <button id="follower_count_<%= @user.id %>" class="btn btn-primary shadow-sm rounded-pill" data-bs-toggle="offcanvas" data-bs-target="#follower" aria-controls="offcanvasRight">
+    <strong><%= @followers.count %></strong> フォロワー
+  </button>
+</div>
+<div class="col-3">
+  <button id="following_count_<%= @user.id %>" class="btn btn-primary shadow-sm rounded-pill" data-bs-toggle="offcanvas" data-bs-target="#followings" aria-controls="offcanvasRight">
+    <strong><%= @followings.count %></strong> フォロー中
+  </button>
+</div>
+<div class="offset-6"></div>
+
+<div class="offcanvas offcanvas-end bg-dark"  tabindex="-1" id="follower" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel" class="text-light">フォロワー</h5>
+    <button type="button" class="btn-close text-reset text-light" data-bs-dismiss="offcanvas" aria-label="閉じる"></button>
+  </div>
+  <div class="offcanvas-body followers">
+    <% if @followers.exists? %>
+      <%= render 'relationships/index', users: @followers %>
+    <% else %>
+      <p class="text-light">ユーザーはいません</p>
+    <% end %>
+  </div>
+</div>
+
+<div class="offcanvas offcanvas-end bg-dark"  tabindex="-1" id="followings" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel" class="text-light">フォロー中</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="閉じる"></button>
+  </div>
+  <div class="offcanvas-body followings">
+    <% if @followings.exists? %>
+      <%= render 'relationships/index', users: @followings %>
+    <% else %>
+      <p class="text-light">ユーザーはいません</p>
+    <% end %>
+  </div>
+</div>

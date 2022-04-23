@@ -1,0 +1,25 @@
+<div class="card-body">
+  <h3 class="mb-3">User情報</h3>
+  <table class="table border-dark">
+    <tr>
+      <td><strong>Name</strong></td>
+      <td class="ps-3"><%= user.name %></td>
+    </tr>
+    <tr>
+      <td class="text-nowrap"><strong>自己紹介</strong></td>
+      <td class="ps-3 text-break"><%= user.introduction %></td>
+    </tr>
+    <tr>
+      <td><strong>住所</strong></td>
+      <td class="ps-3"><%= user.address %></td>
+    </tr>
+    <tr>
+      <td><strong>ステータス</strong></td>
+      <% if user.is_deleted == true %>
+        <td class="ps-3 text-danger font-weight-bold">退会</td>
+      <% else %>
+        <td class="ps-3 text-success font-weight-bold">有効</td>
+      <% end %>
+    </tr>
+  </table>
+</div>

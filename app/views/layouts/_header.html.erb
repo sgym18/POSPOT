@@ -1,15 +1,68 @@
-<% if user_signed_in? %>
-  <li>
-    <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-  </li>
-<% else %>
-  <li>
-    <%= link_to "Sign up", new_user_registration_path %>
-  </li>
-  <li>
-    <%= link_to "Log in", new_user_session_path %>
-  </li>
-  <li>
-    <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
-  </li>
-<% end %>
+<div class="container-fluid">
+  <div class="row justify-content-end pt-2">
+    <% if user_signed_in? %>
+      <div class="col-1 offset-8">
+        <% if current_user.admin? %>
+          <%= link_to "管理者用", admin_users_path, class: "btn btn-outline-light rounded-pill" %>
+        <% end %>
+      </div>
+      <%= render 'searches/form' %>
+    <% end %>
+  </div>
+
+  <div class="row d-flex align-items-center justify-content-center text-center py-4">
+    <% if user_signed_in? %>
+      <div class="col">
+        <%= link_to users_path, class: "btn nav-btn rounded-pill" do %>
+          <i class="fas fa-users"></i> Users
+        <% end %>
+      </div>
+      <div class="col">
+        <%= link_to posts_path, class: "btn nav-btn rounded-pill" do %>
+          <i class="far fa-map"></i> Map
+        <% end %>
+      </div>
+      <div class="col">
+        <%= link_to root_path, class: "text-decoration-none" do %>
+          <%= image_tag 'POSPOT.svg', size: "400x100", class: "logo" %>
+        <% end %>
+      </div>
+      <div class="col">
+        <%= link_to user_path(current_user), class: "btn nav-btn rounded-pill" do %>
+          <i class="far fa-address-card"></i> Profile
+        <% end %>
+      </div>
+      <div class="col">
+        <%= link_to destroy_user_session_path, method: :delete, class: "btn nav-btn rounded-pill" do %>
+          <i class="fas fa-sign-out-alt"></i> Log out
+        <% end %>
+      </div>
+    <% else %>
+      <div class="col">
+        <%= link_to about_path, class: "btn nav-btn rounded-pill" do %>
+          <i class="fas fa-link"></i> About
+        <% end %>
+      </div>
+      <div class="col">
+        <%= link_to root_path, class: "btn nav-btn rounded-pill" do %>
+          <i class="fas fa-map-marker-alt"></i> Top
+        <% end %>
+      </div>
+      <div class="col">
+        <%= link_to root_path, class: "text-decoration-none" do %>
+          <%= image_tag 'POSPOT.svg', size: "400x100", class: "logo" %>
+        <% end %>
+      </div>
+      <div class="col">
+        <%= link_to new_user_registration_path, class: "btn nav-btn rounded-pill" do %>
+          <i class="fas fa-user-plus"></i> Sign up
+        <% end %>
+      </div>
+      <div class="col">
+        <%= link_to new_user_session_path, class: "btn nav-btn rounded-pill" do %>
+          <i class="fas fa-sign-in-alt"></i> Log in
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

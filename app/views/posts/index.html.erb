@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-8">
+      <div class="row">
+        <%= render 'posts/navbar' %>
+      </div>
+      <div class="row mt-2 justify-content-center">
+        <div id="map" class="posts_map border border-primary border-5 rounded"></div>
+      </div>
+    </div>
+    <div class="col-4">
+      <% if params[:id] %>
+        <div class="row">
+          <h4 class="text-center text-light">ブックマーク一覧</h4>
+        </div>
+        <div class="row mt-2">
+          <div class="col-12 bookmark-scroll">
+            <%= render 'bookmarks/index', bookmark_posts: @bookmark_posts %>
+          </div>
+        </div>
+      <% else %>
+        <div class="row">
+          <h4 class="text-center text-light">投稿一覧</h4>
+        </div>
+        <div class="row mt-2">
+          <div class="col-12 post-scroll">
+            <%= render 'index', posts: @posts %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render 'map' %>

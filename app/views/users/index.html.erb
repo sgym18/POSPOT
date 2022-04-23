@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="row scroll-list jscroll">
+    <div class="col-md-4 offset-md-4">
+      <%= render 'index', users: @users %>
+      <%= paginate @users %>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(window).on('scroll', function() {
+    scrollHeight = $(document).height();
+    scrollPosition = $(window).height() + $(window).scrollTop();
+    if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {
+      $('.jscroll').jscroll({
+        contentSelector: '.scroll-list',
+        nextSelector: 'span.next:last a'
+      });
+    }
+  });
+</script>

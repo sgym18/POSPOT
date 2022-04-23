@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      post: 投稿
+    attributes:
+      post:
+        spot: スポット
+        caption: キャプション
+        address: 住所
+        image: 画像
+      post_comment:
+        comment: コメント
+
+

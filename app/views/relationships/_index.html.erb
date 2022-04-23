@@ -1,0 +1,11 @@
+<% users.each do |user| %>
+  <div class="row mb-4 py-2 bg-light shadow rounded">
+    <%= link_to user_path(user), class: "col-3 d-flex align-items-center text-decoration-none link-dark border border-light" do %>
+      <%= image_tag user.get_profile_image(80,80), class: "rounded-circle me-2 shadow-sm" %>
+    <% end %>
+    <div class="col-8 mt-3">
+      <p><strong><%= user.name %></strong></p>
+      <p class="text-truncate"><%= user.introduction %></p>
+    </div>
+  </div>
+<% end %>

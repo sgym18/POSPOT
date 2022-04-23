@@ -1,0 +1,4 @@
+$('#comment_count').html('コメント（<%= @post.post_comments.count %>件）');
+$('#post_comments').html('<%= j(render 'post_comments/comment', post: @post) %>');
+$('#post_comment_comment').val('');
+$('#notice').html("<%= flash[:notice] %>");

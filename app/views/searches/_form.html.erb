@@ -1,0 +1,11 @@
+<div class="col-3">
+  <%= form_with url: search_path, method: :get, local: true do |f| %>
+    <div class="d-flex">
+      <%= f.text_field :keyword, required: true, placeholder: "キーワードを入力", class: "form-control rounded-pill" %>
+      <%= f.button :type => "submit", class: 'btn btn-light rounded-pill' do %>
+        <i class="fas fa-search"></i>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+

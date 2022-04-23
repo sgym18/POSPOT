@@ -1,0 +1,14 @@
+<% if current_user.name != "ゲストユーザー" %>
+  <%= form_with model: [post, post_comment], local: false do |f| %>
+    <div class="row my-3 g-0">
+      <div class="col-10">
+        <%= f.text_area :comment, rows: "2", placeholder: "コメントを入力", class: "form-control" %>
+      </div>
+      <div class="col-2">
+        <%= f.button :type => "submit", class: "btn btn-primary h-100 w-100" do %>
+          <i class="fas fa-paper-plane"></i>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

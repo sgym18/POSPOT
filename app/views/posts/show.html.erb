@@ -1,0 +1,115 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-9">
+      <div class="row mb-2">
+        <div class="col-4">
+          <div class="row text-center">
+              <%= link_to user_path(@post.user) do %>
+                <%= image_tag @post.user.get_profile_image(150,150), class: "mx-auto rounded-circle border border-light shadow-sm" %>
+              <% end %>
+          </div>
+          <div class="row">
+            <p class="h4 text-center text-light"><%= @post.user.name %></p>
+          </div>
+        </div>
+
+        <div class="col-8">
+          <div class="row text-light">
+            <div class="col-10">
+              <h3><%= @post.spot %></h3>
+              <% @post.tags.each do |tag| %>
+                <span class="text-light bg-primary border border-primary rounded small mx-1 px-1">
+                  <%= link_to search_path(keyword: tag.name), class: "text-decoration-none link-light" do %>
+                    #<%= tag.name %>
+                  <% end %>
+                </span>
+              <% end %>
+              <p class="text-break"><%= @post.caption %></p>
+            </div>
+            <div class="col-2 d-flex">
+              <div>
+                <% if @post.user == current_user && current_user.name != "ゲストユーザー" %>
+                  <h1 class="h3">
+                    <%= link_to edit_post_path(@post), class: "text-decoration-none text-primary" do %>
+                      <i class="far fa-edit"></i>
+                    <% end %>
+                  </h1>
+                <% end %>
+              </div>
+              <div class="ms-1 bookmark_<%= @post.id %>">
+                <%= render 'bookmarks/bookmark', post: @post %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <div id='show_map' class="border border-primary border-5 rounded"></div>
+        </div>
+        <div class="col-6">
+          <%= image_tag @post.get_image(500,500), class: "rounded img-fluid" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-3">
+      <div class="row">
+        <h4 class="text-center text-light" id="comment_count">コメント（<%= @post.post_comments.count %>件）</h4>
+      </div>
+      <%= render 'post_comments/form',  post: @post, post_comment: @post_comment %>
+      <div class="row comment-scroll" id="post_comments">
+        <%= render 'post_comments/comment', post: @post %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  let map
+  const post = gon.post
+
+  function initMap(){
+    geocoder = new google.maps.Geocoder()
+
+    map = new google.maps.Map(document.getElementById('show_map'), {
+      center: {lat: post.latitude, lng: post.longitude},
+      zoom: 15,
+      mapTypeControl: false,
+      styles: [
+        {
+          featureType: 'all',
+          elementType: 'labels',
+          stylers: [
+            {visibility: 'off'},
+          ],
+        },
+        {
+          featureType: 'all',
+          elementType: 'all',
+          stylers: [
+            {visibility: 'inherit'},
+          ],
+        },
+        {
+          featureType: 'all',
+          elementType: 'all',
+          stylers: [
+            {hue: '#0F222D'},
+            {saturation : -70},
+          ],
+        }
+      ]
+    });
+
+    let marker = new google.maps.Marker({
+      position:{lat: post.latitude, lng: post.longitude},
+      map: map,
+      animation: google.maps.Animation.DROP
+    });
+  }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_KEY'] %>&callback=initMap" async defer></script>

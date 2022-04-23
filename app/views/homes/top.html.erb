@@ -1,2 +1,21 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6 bg-light rounded">
+      <p class="text-center pt-3">
+        <strong class="h3">POSPOT</strong>へようこそ！<br>
+        さっそく登録して投稿しにいきましょう。
+      </p>
+      <div class="btn-wrapper col-10 mx-auto">
+        <div class="row">
+          <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "btn btn-secondary btn-lg rounded-pill mb-4" %>
+        </div>
+        <div class="row">
+          <%= link_to "Log in", new_user_session_path, class: "btn btn-dark btn-lg rounded-pill mb-4" %>
+        </div>
+        <div class="row">
+          <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg text-light rounded-pill mb-4" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

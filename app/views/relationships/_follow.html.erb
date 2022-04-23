@@ -1,0 +1,13 @@
+<% if user.is_deleted == false && current_user.name != "ゲストユーザー" && user.name != "ゲストユーザー"%>
+  <% unless user == current_user %>
+    <% if current_user.following?(user) %>
+      <%= link_to user_relationships_path(user), method: :delete, remote: true, class: "btn btn-primary btn-sm rounded-pill shadow-sm" do %>
+        <i class="fas fa-user-minus"></i><br>フォロー解除
+      <% end %>
+    <% else %>
+      <%= link_to user_relationships_path(user), method: :post, remote: true, class: "btn btn-primary btn-sm rounded-pill shadow-sm" do %>
+        <i class="fas fa-user-plus"></i><br>フォローする
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

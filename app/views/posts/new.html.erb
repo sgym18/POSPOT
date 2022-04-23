@@ -1,0 +1,50 @@
+<div class="container-fluid col-5 mx-auto bg-light rounded">
+  <div class="row py-3">
+    <%= form_with model: @post do |f| %>
+      <div class="form-floating my-3">
+        <%= f.text_field :spot, autofocus: true, placeholder: "スポット名を入力", id: "floatingName", class: "form-control" %>
+        <%= f.label :spot, "スポット", for: "floatingName" %>
+      </div>
+      <% if @post.errors.include?(:spot) %>
+        <span class="text-danger"><i class="fas fa-exclamation-circle"></i><%= @post.errors.full_messages_for(:spot).first %></span>
+      <% end %>
+
+      <div class="form-floating my-3">
+        <%= f.text_area :caption, placeholder: "紹介文を入力", id: "floatingCaption", class: "form-control" %>
+        <%= f.label :caption, "キャプション", for: "floatingCaption" %>
+      </div>
+      <% if @post.errors.include?(:caption) %>
+        <span class="text-danger"><i class="fas fa-exclamation-circle"></i><%= @post.errors.full_messages_for(:caption).first %></span>
+      <% end %>
+
+      <div class="form-floating my-3">
+        <%= f.text_field :address, placeholder: "住所を入力", id: "floatingAddress", class: "form-control" %>
+        <%= f.label :address, "住所", for: "floatingAddress" %>
+      </div>
+      <% if @post.errors.include?(:address) %>
+        <span class="text-danger"><i class="fas fa-exclamation-circle"></i><%= @post.errors.full_messages_for(:address).first %></span>
+      <% end %>
+
+      <div class="input-group my-3">
+        <span class="input-group-text" id="inputGroupFileAddon01">画像</span>
+        <%= f.file_field :image, accept: "image/*", id: "inputGroupFile01", class: "form-control" %>
+      </div>
+      <% if @post.errors.include?(:image) %>
+        <span class="text-danger"><i class="fas fa-exclamation-circle"></i><%= @post.errors.full_messages_for(:image).first %></span>
+      <% end %>
+
+      <div class="form-floating my-3">
+        <%= f.text_field :tag_name, placeholder: "タグを入力", id: "floatingTag", class: "form-control" %>
+        <%= f.label :tag_name, "タグ（空白で区切ると複数タグを登録できます）", for: "floatingTag" %>
+      </div>
+
+      <div class="d-grid">
+        <%= f.submit "投稿", class: "btn btn-lg btn-dark" %>
+      </div>
+    <% end %>
+    
+    <div class="d-grid mt-3">
+      <%= link_to "Mapへ戻る", posts_path, class: "btn btn-lg btn-outline-dark" %>
+    </div>
+  </div>
+</div>
