@@ -4,9 +4,9 @@
       <div class="row mb-2">
         <div class="col-4">
           <div class="row text-center">
-              <%= link_to user_path(@post.user) do %>
-                <%= image_tag @post.user.get_profile_image(150,150), class: "mx-auto rounded-circle border border-light shadow-sm" %>
-              <% end %>
+            <%= link_to user_path(@post.user) do %>
+              <%= image_tag @post.user.get_profile_image(150,150), class: "mx-auto rounded-circle border border-light shadow-sm" %>
+            <% end %>
           </div>
           <div class="row">
             <p class="h4 text-center text-light"><%= @post.user.name %></p>

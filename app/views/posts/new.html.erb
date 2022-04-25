@@ -18,8 +18,8 @@
       <% end %>
 
       <div class="form-floating my-3">
-        <%= f.text_field :address, placeholder: "住所を入力", id: "floatingAddress", class: "form-control" %>
-        <%= f.label :address, "住所", for: "floatingAddress" %>
+        <%= f.text_field :address, placeholder: "住所や地名を入力", id: "floatingAddress", class: "form-control" %>
+        <%= f.label :address, "住所 or 地名 or 建物名", for: "floatingAddress" %>
       </div>
       <% if @post.errors.include?(:address) %>
         <span class="text-danger"><i class="fas fa-exclamation-circle"></i><%= @post.errors.full_messages_for(:address).first %></span>
@@ -42,7 +42,7 @@
         <%= f.submit "投稿", class: "btn btn-lg btn-dark" %>
       </div>
     <% end %>
-    
+
     <div class="d-grid mt-3">
       <%= link_to "Mapへ戻る", posts_path, class: "btn btn-lg btn-outline-dark" %>
     </div>
