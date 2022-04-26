@@ -18,6 +18,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     gon.post = @post
     @post_comment = PostComment.new
+    @post_comments = @post.post_comments.order(created_at: :desc)
   end
 
   def new
@@ -27,11 +28,12 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    tag_list = params[:post][:tag_name].split(/ |　/)
+    @tag_list = params[:post][:tag_name].split(/ |　/)
     if @post.save
-      @post.save_tags(tag_list)
+      @post.save_tags(@tag_list)
       redirect_to post_path(@post), notice: "投稿しました。"
     else
+      @post.save_tags(@tag_list)
       render :new
     end
   end
@@ -43,9 +45,9 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    tag_list = params[:post][:tag_name].split(/ |　/)
+    @tag_list = params[:post][:tag_name].split(/ |　/)
     if @post.update(post_params)
-      @post.save_tags(tag_list)
+      @post.save_tags(@tag_list)
       redirect_to post_path(@post), notice: "変更を保存しました"
     else
       render :edit
