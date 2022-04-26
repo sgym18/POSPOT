@@ -1,0 +1,7 @@
+<% post.tags.each do |tag| %>
+  <span class="bg-primary border border-primary rounded small me-1 mb-1 px-1 text-break">
+    <%= link_to search_path(keyword: tag.name), class: "text-decoration-none link-light" do %>
+      #<%= tag.name %>
+    <% end %>
+  </span>
+<% end %>

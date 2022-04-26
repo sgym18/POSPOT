@@ -1,9 +1,9 @@
-<div class="container-fluid col-8 mx-auto mt-5">
+<div class="container-fluid mx-auto mt-5">
   <div class="row">
-    <div class="col-6 card" id="user_<%= @user.id %>">
+    <div class="col-sm-12 col-xs-12 col-md-6 col-lg-5 col-xl-5 offset-lg-1 card" id="user_<%= @user.id %>">
       <%= render 'show', user: @user %>
     </div>
-    <div class="col-6 card">
+    <div class="col-sm-12 col-xs-12 col-md-6 col-lg-5 col-xl-5 card">
       <div class="card-body">
         <h3 class="mb-3 card-title">User編集</h3>
         <%= form_with model: [ :admin, @user ], local: false do |f| %>

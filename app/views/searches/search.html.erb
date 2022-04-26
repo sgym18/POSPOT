@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-4 offset-4">
+    <div class="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-4 offset-lg-4">
       <ul id="tab-menu" class="list-unstyled list-group list-group-horizontal">
         <li class="flex-fill"><a href="#tab1" class="active d-grid text-decoration-none btn btn-outline-light">投稿</a></li>
         <li class="flex-fill"><a href="#tab2" class="d-grid text-decoration-none btn btn-outline-light">タグ</a></li>
         <li class="flex-fill"><a href="#tab3" class="d-grid text-decoration-none btn btn-outline-light">User</a></li>
       </ul>
 
-      <div id="tab-contents">
+      <div id="tab-contents" class="row">
         <div id="tab1" class="tab search_scroll">
           <% if @post_result.present? %>
             <%= render 'posts/index', posts: @post_result %>

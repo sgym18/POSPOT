@@ -1,10 +1,10 @@
 <% users.each do |user| %>
-  <div class="row mb-3 py-2 bg-light shadow rounded">
-    <%= link_to user_path(user), class: "col-8 d-flex align-items-center text-decoration-none link-dark border border-light" do %>
+  <div class="row align-items-center mb-3 py-2 bg-light shadow rounded">
+    <%= link_to user_path(user), class: "col-8 col-md-9 col-lg-8 text-decoration-none link-dark border border-light" do %>
       <%= image_tag user.get_profile_image(80,80), class: "rounded-circle me-2 shadow-sm" %>
       <strong><%= user.name %></strong>
     <% end %>
-    <div class="col-4 d-flex align-items-center follow_<%= user.id %>">
+    <div class="col-4 col-md-3 col-lg-4 follow_<%= user.id %>">
       <%= render 'relationships/follow', user: user %>
     </div>
   </div>
