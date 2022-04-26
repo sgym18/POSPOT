@@ -1,5 +1,5 @@
 <div class="col-12">
-  <% post.post_comments.each do |comment| %>
+  <% post_comments.each do |comment| %>
     <div class="card mb-3 shadow">
       <div class="pt-2">
         <%= image_tag comment.user.get_profile_image(50,50), class: "ms-2 rounded-circle" %>
