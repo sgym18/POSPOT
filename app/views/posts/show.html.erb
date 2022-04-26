@@ -49,7 +49,7 @@
         <h4 class="text-center text-light" id="comment_count">コメント（<%= @post.post_comments.count %>件）</h4>
       </div>
       <%= render 'post_comments/form',  post: @post, post_comment: @post_comment %>
-      <div class="row comment-scroll" id="post_comments">
+      <div class="row comment-scroll" id="comments">
         <%= render 'post_comments/comment', post_comments: @post_comments %>
       </div>
     </div>
