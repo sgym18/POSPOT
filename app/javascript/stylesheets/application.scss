@@ -31,6 +31,8 @@ a {
 }
 
 .logo {
+  height: 90px;
+  width: 340px;
   transition: ease-in-out 0.3s;
   &:hover {
     transform: scale(1.2) rotate(10deg);
@@ -104,5 +106,28 @@ a {
   }
   &::-webkit-scrollbar-track {
     background-color: rgba(15, 34, 45, 0.2);
+  }
+}
+
+@media screen and (max-width:1024px) {
+  .comment-scroll {
+    height: 1100px;
+     &::-webkit-scrollbar {
+    height: 1100px;
+    }
+  }
+}
+
+@media screen and (max-width:426px) {
+  .logo {
+    height: 70px;
+    width: 300px;
+  }
+
+  .search-btn {
+    height: 40px;
+    width: 40px;
+    font-size: 8px;
+    padding: 0 3px 3px 0;
   }
 }
