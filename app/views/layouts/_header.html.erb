@@ -3,12 +3,12 @@
     <div class="col-12 d-flex justify-content-center position-relative">
       <% if user_signed_in? %>
         <%= link_to posts_path, class: "text-decoration-none" do %>
-          <%= image_tag 'POSPOT.svg', size: "340x90", class: "logo" %>
+          <%= image_tag 'POSPOT.svg', class: "logo" %>
         <% end %>
         <%= render 'searches/form' %>
       <% else %>
         <%= link_to root_path, class: "text-decoration-none" do %>
-          <%= image_tag 'POSPOT.svg', size: "340x90", class: "logo" %>
+          <%= image_tag 'POSPOT.svg', class: "logo" %>
         <% end %>
       <% end %>
     </div>
