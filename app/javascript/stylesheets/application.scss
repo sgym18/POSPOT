@@ -31,6 +31,8 @@ a {
 }
 
 .logo {
+  height: 90px;
+  width: 340px;
   transition: ease-in-out 0.3s;
   &:hover {
     transform: scale(1.2) rotate(10deg);
