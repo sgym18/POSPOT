@@ -44,7 +44,10 @@
 
 ##  設計書
 
-[**実装機能リスト**](https://docs.google.com/spreadsheets/d/11MQjicDKZr9Q34JRtIg04w8YOdTbYtcIiW4cZyV-E_U/edit#gid=1091086188)
+- [**実装機能リスト**](https://docs.google.com/spreadsheets/d/11MQjicDKZr9Q34JRtIg04w8YOdTbYtcIiW4cZyV-E_U/edit#gid=1091086188)
+- [**ER図**](https://app.diagrams.net/#G1Zev69VzTUq0S_bDPZlAZ1QI2xwn98MlY)
+- [**アプリケーション詳細設計書**](https://docs.google.com/spreadsheets/d/1EEmY9v8RmN2KFOTCLnT-d_GR8vS3fs_NFYt6n2FEmHI/edit?usp=sharing)
+- [**テスト仕様書**](https://docs.google.com/spreadsheets/d/14_47YGnKHO9RR6qFfaaJkjrD5v4ZUkfIIqIUbcSOWPc/edit#gid=0)
 
 
 ##  開発環境
@@ -63,5 +66,6 @@
 
 ##  使用素材
 
-[**ICOOON MONO**](https://icooon-mono.com/)  
-[**unDraw**](https://undraw.co/illustrations)
+- [**ICOOON MONO**](https://icooon-mono.com/)
+- [**unDraw**](https://undraw.co/illustrations)
+- [**Canva**](https://www.canva.com/)
