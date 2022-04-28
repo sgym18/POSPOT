@@ -106,3 +106,46 @@ a {
     background-color: rgba(15, 34, 45, 0.2);
   }
 }
+
+@media screen and (max-width:1024px) {
+  .comment-scroll {
+    height: 1100px;
+     &::-webkit-scrollbar {
+    height: 1100px;
+    }
+  }
+}
+
+@media screen and (max-width:426px) {
+  .logo {
+    height: 70px;
+    width: 300px;
+  }
+
+  .search-btn {
+    height: 40px;
+    width: 40px;
+    font-size: 8px;
+    padding: 0 3px 3px 0;
+  }
+
+  .nav-btn {
+    height: 40px;
+    width: 100px;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width:321px) {
+  .logo {
+    height: 65px;
+    width: 250px;
+  }
+
+  .search-btn {
+    height: 35px;
+    width: 35px;
+    font-size: 4px;
+    padding: 0 2px 2px 0;
+  }
+}
