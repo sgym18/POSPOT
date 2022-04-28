@@ -130,4 +130,24 @@ a {
     font-size: 8px;
     padding: 0 3px 3px 0;
   }
+
+  .nav-btn {
+    height: 40px;
+    width: 100px;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width:321px) {
+  .logo {
+    height: 65px;
+    width: 250px;
+  }
+
+  .search-btn {
+    height: 35px;
+    width: 35px;
+    font-size: 4px;
+    padding: 0 2px 2px 0;
+  }
 }
