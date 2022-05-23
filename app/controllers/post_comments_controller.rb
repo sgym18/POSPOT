@@ -13,7 +13,9 @@ class PostCommentsController < ApplicationController
   end
 
   def destroy
-    PostComment.find_by(post_id: params[:post_id], id: params[:id]).destroy
+    @post_comment = PostComment.find_by(post_id: params[:post_id], id: params[:id])
+    @post_comment.user_id = current_user.id
+    @post_comment.destroy
     @post = Post.find(params[:post_id])
     @post_comments = @post.post_comments.order(created_at: :desc)
     flash.now[:notice] = "コメントを削除しました。"
